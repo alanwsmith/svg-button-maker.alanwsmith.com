@@ -489,16 +489,16 @@ ul > :where(:not(:first-child)) {
 
       <h2>Samples</h2>
       <div class="sampleWrapper">
-        <button class="rewind-button sample-button" data-primary-selector=".rewind-button"><div></div></button>
-        <button class="play-button sample-button" data-primary-selector=".play-button"><div></div></button>
-        <button class="pause-button sample-button" data-primary-selector=".pause-button"><div></div></button>
-        <button class="fast-forward-button sample-button" data-primary-selector=".fast-forward-button"><div></div></button>
-        <button class="download-button sample-button" data-primary-selector=".download-button"><div></div></button>
-        <button class="help-button sample-button" data-primary-selector=".help-button"><div></div></button>
-        <button class="new-window-button sample-button" data-primary-selector=".new-window-button"><div></div></button>
-        <button class="sound-high-button sample-button" data-primary-selector=".sound-high-button"><div></div></button>
-        <button class="mute-button sample-button" data-primary-selector=".mute-button"><div></div></button>
-        <button class="wolf-button sample-button" data-primary-selector=".wolf-button"><div></div></button>
+        <button class="rewind-button sample-button" data-key="rewind-button"><div></div></button>
+        <button class="play-button sample-button" data-key="play-button"><div></div></button>
+        <button class="pause-button sample-button" data-key="pause-button"><div></div></button>
+        <button class="fast-forward-button sample-button" data-key="fast-forward-button"><div></div></button>
+        <button class="download-button sample-button" data-key="download-button"><div></div></button>
+        <button class="help-button sample-button" data-key="help-button"><div></div></button>
+        <button class="new-window-button sample-button" data-key="new-window-button"><div></div></button>
+        <button class="sound-high-button sample-button" data-key="sound-high-button"><div></div></button>
+        <button class="mute-button sample-button" data-key="mute-button"><div></div></button>
+        <button class="wolf-button sample-button" data-key="wolf-button"><div></div></button>
       </div>
 
       <div class="items">
@@ -684,7 +684,7 @@ ul > :where(:not(:first-child)) {
       </div>
     </footer>
     <script type="module">
-      import { init } from "/scripts/svg-to-css-converter.js"
+      import { init } from "/scripts/svg-button-maker.js"
       init()
     </script>
 
