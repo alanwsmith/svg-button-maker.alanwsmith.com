@@ -12,7 +12,7 @@
     <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#000000" />
 
-    <title>Alan's SVG To CSS Converter</title>
+    <title>Alan's SVG Button Maker</title>
     <meta name="description" content="A tool that turns SVGs into HTML/CSS buttons" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:description" content="A tool that turns SVGs into HTML/CSS buttons" />
@@ -26,15 +26,14 @@
     -->
 
     <style>
-
 :root {
-  --background-color: #121;
-  --primary-color: #aaa;
-  --secondary-color: blue;
   --accent-color-1: green;
   --accent-color-2: purple;
-  --accent-color-3: goldenrod;
-  --reverse-color: #eee;
+  --background-color: #121;
+  --headline-color: #432;
+  --reverse-color: red;
+  --text-color: #aaa;
+  --title-color: #234;
 
   --xxsmall-margin: 0.1rem;
   --xsmall-margin: 0.3rem;
@@ -82,11 +81,6 @@
   --xxxlarge-width: min(86rem, 96%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
 *, 
 *::before, 
 *::after {
@@ -101,13 +95,9 @@
   color: var(--accent-color-1);
 }
 
-html {
-  color-scheme: light dark;
-}
-
 body {
   background-color: var(--background-color);
-  color: var(--primary-color);
+  color: var(--text-color);
   display: grid;
   font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   font-weight: normal;
@@ -124,21 +114,22 @@ a {
 }
 
 a:hover, a:focus {
-  color: var(--accent-color-2);
+  color: var(--title-color);
 }
 
-.blue {
-  color: blue;
+.centered {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
 }
 
-button {
-  background: none;
-  border: 1px solid var(--accent-color-1);
-  border-radius: var(--medium-border-radius);
-  color: var(--accent-color-1);
-  cursor: pointer;
-  font-size: var(--small-font-size);
-  outline: none;
+.copyButtonWrapper { 
+  text-align: right;
+}
+
+fieldset {
+  border-radius: var(--large-border-radius);
 }
 
 .flow > :where(:not(:first-child)) {
@@ -152,20 +143,20 @@ footer {
   text-align: center;
 }
 
-.green {
-  color: green;
-}
-
-h1, h2, h3, h4 {
+h2, h3, h4, h5, h6 {
+  color: var(--headline-color);
   line-height: 1.1;
-  color: var(--secondary-color);
   text-wrap: balance;
   font-weight: 900;
 }
 
 h1 {
+  color: var(--title-color);
   font-size: var(--xxxlarge-font-size);
+  font-weight: 900;
+  line-height: 1.1;
   margin-top: 1.0em;
+  text-wrap: balance;
 }
 
 h2 {
@@ -209,17 +200,22 @@ img {
 }
 
 .items textarea {
-  width: 90%;
+  width: 100%;
 }
 
 .items input[type="text"] {
-  width: 90%;
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
-
 
 label {
   display: block;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+legend {
+  font-weight: 900;
 }
 
 main {
@@ -229,12 +225,15 @@ main {
   max-width: var(--large-width);
 }
 
-.red {
-  color: red;
-}
-
 section {
   --flow-space: 1.3em;
+}
+
+.no-wrap{
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: visible; 
+  overscroll-behavior-x: none;
 }
 
 ul > :where(:not(:first-child)) {
@@ -246,6 +245,9 @@ ul > :where(:not(:first-child)) {
  
   <body>
     <header>
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~ 
+      <a href="https://tools.alanwsmith.com/">other tools</a> ~
+      <a href="https://links.alanwsmith.com/">other sites</a>
     </header>
 
     <main class="flow"> 
@@ -255,50 +257,69 @@ ul > :where(:not(:first-child)) {
       
       <p>
         This tool converts SVGs into CSS based buttons. Paste
-        your SVG string into the <em>SVG Input</em> field to generate
-        the <em>CSS Output</em> to apply to the <em>Button HTML</em> on your page. 
+        the string for your SVG into the <em>SVG Input</em> field to generate
+        the <em>CSS Output</em> that corresponds with the <em>Button HTML</em>
+        for your site. You can use the <em>Example Listener</em> to get 
+        started handling clicks.
       </p>
 
       <div id="warning" class="red"></div>
+
       <div class="items">
-        <div>
-          <label for="svgInput">SVG Input</label>
+        <fieldset>
+          <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
-        </div>
-        <div>
-          <label for="cssOutput">CSS Output</label>
-          <textarea id="cssOutput" rows="7"></textarea>
-        </div>
-        <div>
-          <label for="buttonHTML">Button HTML</label>
-          <input type="text" id="buttonHTML" />
-        </div>
-        <div>
-          <label>Example Output</label>
-          <div class="exampleWrapper"></div>
-        </div>
+        </fieldset>
+        <fieldset>
+          <legend>CSS Output</legend>
+          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
+          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Button HTML</legend>
+          <textarea id="buttonHTML" rows="3"></textarea>
+          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Example Output</legend>
+          <div class="exampleWrapper centered"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Example Listener</legend>
+          <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
+          <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Listener Output</legend>
+          <div class="clickCount centered">Clicks: 0</div>
+        </fieldset>
       </div>
 
+      <details class="flow">
+        <summary>Details</summary>
       <p>
         The CSS uses <code>mask-image</code> and associated properties. 
-        That allows the buttons to use CSS variables (as compared to 
-        <code>background-image</code> which requires changes to colors
-        to be made directly in the source SVG string)
+        It allows buttons to use CSS variables (as compared to 
+        <code>background-image</code> which requires changes 
+        the source SVG directly to do things like change colors).
       </p>
 
       <p>
         I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-        They are free and open-source, using the MIT License. My understanding
-        is that means there is no requirement to provide attribution when
-        using them. (Note: some of their SVGs have an issue that prevents them
-        from showing up. See <em>Issues</em> below for how to fix that)
+        They are free, open-source, and use the 
+        <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
+        (Note: some of their SVGs have an issue that prevents them
+          from working properly with <code>mask-image</code>. 
+          See <em>Issues</em> below for how to fix that.)
       </p>
 
+      </details>
 
-      <h3>Button Customization</h3>
+      <h2>Button Customization</h2>
+
       <div class="items">
         <fieldset>
-          <legend>Button Selector</legend>
+          <legend>CSS Selector</legend>
           <div>
             <label for="buttonSelector">Primary</label>
             <input type="text" id="buttonSelector" />
@@ -309,7 +330,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Size</legend>
+          <legend>Size</legend>
           <div>
             <label for="buttonWidth">Width</label>
             <input type="text" id="buttonWidth" />
@@ -320,7 +341,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Primary Color</legend>
+          <legend>Primary Color</legend>
           <div>
             <label for="buttonColorVar">Variable Name</label>
             <input type="text" id="buttonColorVar" />
@@ -330,12 +351,15 @@ ul > :where(:not(:first-child)) {
             <input type="text" id="buttonColorValue" />
           </div>
         </fieldset>
-        <div>
-          <label>Example Output</label>
-          <div class="exampleWrapper"></div>
-        </div>
+        <fieldset class="centerd-fieldset">
+          <legend>Example Output</legend>
+          <div class="centered">
+            <div class="exampleWrapper"></div>
+            <div class="clickCount">Clicks: 0</div>
+          </div>
+        </fieldset>
         <fieldset>
-          <legend>Button Border Color</legend>
+          <legend>Border Color</legend>
           <div>
             <label for="borderColorVar">Variable Name</label>
             <input type="text" id="borderColorVar" />
@@ -346,7 +370,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Background Color</legend>
+          <legend>Background Color</legend>
           <div>
             <label for="backgroundColorVar">Variable Name</label>
             <input type="text" id="backgroundColorVar" />
@@ -358,8 +382,37 @@ ul > :where(:not(:first-child)) {
         </fieldset>
       </div>
 
-      <h3>Icons</h3>
-      <p>Check out <a href="https://iconoir.com/">Iconoir</a> for free, open-source icons.</p>
+      <h2>Page Customizations</h2>
+
+      <div class="items">
+        <div>
+          <label for="pageCSS">Page CSS</label>
+          <textarea id="pageCSS" rows="7"></textarea>
+        </div>
+        <fieldset class="centerd-fieldset">
+          <legend>Example Output</legend>
+          <div class="centered">
+            <div class="exampleWrapper"></div>
+            <div class="clickCount">Clicks: 0</div>
+          </div>
+        </fieldset>
+      </div>
+
+      <h2>TODO</h2>
+      <ul>
+        <li>
+          Figure out if an example aria label on the buttons makes sense
+        </li>
+        <li>
+          Save setting so refreshing the page doesn't reset the options
+        </li>
+        <li>
+          Include icon samples or sets directly
+        </li>
+        <li>
+          Maybe add color input selectors
+        </li>
+      </ul>
 
       <h2>Issues</h2>
       <ul>
@@ -370,12 +423,6 @@ ul > :where(:not(:first-child)) {
         </li>
       </ul>
 
-      <h2>Notes</h2>
-      <ul>
-        <li>I'm using mask-image instead of background-image so that css variables can control the color</li>
-        <li>After some effort trying to add a border to an image using mask-image I switched tactics and nested a div. TBD if there's a way to do it with a single element</li>
-      </ul>
-
       <h2>References</h2>
       <ul>
         <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
@@ -383,7 +430,6 @@ ul > :where(:not(:first-child)) {
         <li><a href="https://codepen.io/tigt/post/optimizing-svgs-in-data-uris">Optimizing SVGs in data URIs - Taylor Hunt</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI() - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
       </ul>
 
