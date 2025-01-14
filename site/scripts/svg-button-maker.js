@@ -7,6 +7,12 @@ const samples = {
   "fast-forward-button": {
     "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" stroke-width="2" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
   },
+  "help-button": {
+    "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9 9C9 5.49997 14.5 5.5 14.5 9C14.5 11.5 12 10.9999 12 13.9999" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 18.01L12.01 17.9989" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
+  },
+  "new-window-button": {
+    "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M8 21H20.4C20.7314 21 21 20.7314 21 20.4V3.6C21 3.26863 20.7314 3 20.4 3H3.6C3.26863 3 3 3.26863 3 3.6V16" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.5 20.5L12 12M12 12V16M12 12H8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
+  },
   "pause-button": {
     "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="2"><path d="M6 18.4V5.6C6 5.26863 6.26863 5 6.6 5H9.4C9.73137 5 10 5.26863 10 5.6V18.4C10 18.7314 9.73137 19 9.4 19H6.6C6.26863 19 6 18.7314 6 18.4Z" fill="#000000" stroke="#000000" stroke-width="2"></path><path d="M14 18.4V5.6C14 5.26863 14.2686 5 14.6 5H17.4C17.7314 5 18 5.26863 18 5.6V18.4C18 18.7314 17.7314 19 17.4 19H14.6C14.2686 19 14 18.7314 14 18.4Z" fill="#000000" stroke="#000000" stroke-width="2"></path></svg>`
   },
@@ -129,12 +135,16 @@ function doUpdate() {
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
   const primaryClass = state.buttonSelector.value
+  let secondaryClasses = state.secondaryClasses.value
+  if (secondaryClasses !== "") {
+    secondaryClasses = ` ${secondaryClasses}`
+  }
   exampleButtonEls.forEach((exampleButtonEl) => {
     exampleButtonEl.removeAttribute("class")
     exampleButtonEl.classList.add("example-button")
     exampleButtonEl.classList.add(primaryClass)
   })
-  state.buttonHTML.value = `<button class="${primaryClass}"></button>`
+  state.buttonHTML.value = `<button class="${primaryClass}${secondaryClasses}"></button>`
 }
 
 function loadInitialValues() {
@@ -196,6 +206,7 @@ function prepElements() {
     "pageCSS",
     "eventListener",
     "rootVariables",
+    "secondaryClasses", 
   ]
   els.forEach((el) => {
     state[el] = document.querySelector(`#${el}`)
