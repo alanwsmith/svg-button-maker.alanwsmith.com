@@ -143,6 +143,10 @@ button {
   outline: none;
 }
 
+fieldset {
+  border-radius: var(--large-border-radius);
+}
+
 .flow > :where(:not(:first-child)) {
   margin-top: var(--flow-space, 1.0em);
 }
@@ -248,6 +252,9 @@ ul > :where(:not(:first-child)) {
  
   <body>
     <header>
+      <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~ 
+      <a href="https://tools.alanwsmith.com/">other tools</a> ~
+      <a href="https://links.alanwsmith.com/">other sites</a>
     </header>
 
     <main class="flow"> 
@@ -262,6 +269,7 @@ ul > :where(:not(:first-child)) {
       </p>
 
       <div id="warning" class="red"></div>
+
       <div class="items">
         <div>
           <label for="svgInput">SVG Input</label>
@@ -296,8 +304,8 @@ ul > :where(:not(:first-child)) {
         from showing up. See <em>Issues</em> below for how to fix that)
       </p>
 
-
       <h2>Button Customization</h2>
+
       <div class="items">
         <fieldset>
           <legend>Button Selector</legend>
@@ -359,6 +367,32 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
       </div>
+
+      <h2>Page Customizations</h2>
+
+      <div class="items">
+        <div>
+          <label for="pageCSS">Page CSS</label>
+          <textarea id="pageCSS" rows="8"></textarea>
+        </div>
+        <div>
+          <label>Example Output</label>
+          <div class="exampleWrapper"></div>
+        </div>
+      </div>
+
+      <h2>TODO</h2>
+      <ul>
+        <li>
+          Save setting so refreshing the page doesn't reset the options
+        </li>
+        <li>
+          Include icon sets directly
+        </li>
+        <li>
+          Maybe add color input selectors
+        </li>
+      </ul>
 
       <h2>Issues</h2>
       <ul>
