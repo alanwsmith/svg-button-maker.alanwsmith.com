@@ -117,6 +117,13 @@ a:hover, a:focus {
   color: var(--title-color);
 }
 
+.centered {
+  display: grid;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
 .copyButtonWrapper { 
   text-align: right;
 }
@@ -252,40 +259,40 @@ ul > :where(:not(:first-child)) {
         This tool converts SVGs into CSS based buttons. Paste
         the string for your SVG into the <em>SVG Input</em> field to generate
         the <em>CSS Output</em> that corresponds with the <em>Button HTML</em>
-        for your site. You can also use the <em>Example Listener</em> to get 
+        for your site. You can use the <em>Example Listener</em> to get 
         started handling clicks.
       </p>
 
       <div id="warning" class="red"></div>
 
       <div class="items">
-        <div>
-          <label for="svgInput">SVG Input</label>
+        <fieldset>
+          <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
-        </div>
-        <div>
-          <label for="cssOutput">CSS Output</label>
+        </fieldset>
+        <fieldset>
+          <legend>CSS Output</legend>
           <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
           <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
-        </div>
-        <div>
-          <label for="buttonHTML">Button HTML</label>
-          <input type="text" id="buttonHTML" />
+        </fieldset>
+        <fieldset>
+          <legend>Button HTML</legend>
+          <textarea id="buttonHTML" rows="3"></textarea>
           <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
-        </div>
-        <div>
-          <label>Example Output</label>
-          <div class="exampleWrapper"></div>
-        </div>
-        <div>
-          <label for="eventListener">Example Listener</label>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Example Output</legend>
+          <div class="exampleWrapper centered"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Example Listener</legend>
           <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
           <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
-        </div>
-        <div>
-          <label>Listener Output</label>
-          <div class="clickCount">Clicks: 0</div>
-        </div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Listener Output</legend>
+          <div class="clickCount centered">Clicks: 0</div>
+        </fieldset>
       </div>
 
       <details class="flow">
@@ -344,10 +351,10 @@ ul > :where(:not(:first-child)) {
             <input type="text" id="buttonColorValue" />
           </div>
         </fieldset>
-        <div>
-          <label>Example Output</label>
+        <fieldset class="centerd-fieldset">
+          <legend>Example Output</legend>
           <div class="exampleWrapper"></div>
-        </div>
+        </fieldset>
         <fieldset>
           <legend>Border Color</legend>
           <div>
@@ -379,10 +386,10 @@ ul > :where(:not(:first-child)) {
           <label for="pageCSS">Page CSS</label>
           <textarea id="pageCSS" rows="7"></textarea>
         </div>
-        <div>
-          <label>Example Output</label>
+        <fieldset class="centerd-fieldset">
+          <legend>Example Output</legend>
           <div class="exampleWrapper"></div>
-        </div>
+        </fieldset>
       </div>
 
       <h2>TODO</h2>
