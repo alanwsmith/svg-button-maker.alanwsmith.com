@@ -79,13 +79,12 @@ function doUpdate() {
   state.cssOutput.value = results
   state.stylesheet.textContent = results
   state.script.innerHTML = state.eventListener.value
-  //state.script.innerText = `console.log("pint")`
 }
 
 function loadInitialValues() {
   state.pageCSS.value = `--accent-color-1: #A8763E;
---accent-color-2: #F7F3E3;
---background-color: #F9EAE1;
+--accent-color-2: #F9EAE1;
+--background-color: #F7F3E3;
 --button-border-radius: 0.7rem;
 --headline-color: #112;
 --text-color: #112;

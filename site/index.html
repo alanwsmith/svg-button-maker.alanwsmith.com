@@ -92,7 +92,7 @@
 }
 
 ::marker {
-  color: var(--accent-color-2);
+  color: var(--accent-color-1);
 }
 
 body {
@@ -204,6 +204,11 @@ img {
 label {
   display: block;
   padding-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+legend {
+  font-weight: 900;
 }
 
 main {
@@ -245,9 +250,10 @@ ul > :where(:not(:first-child)) {
       
       <p>
         This tool converts SVGs into CSS based buttons. Paste
-        the string for your SVG string into the <em>SVG Input</em> field to generate
-        the <em>CSS Output</em> to apply to the <em>Button HTML</em> on your page. 
-        The <em>Example Listener</em> will get you started handling clicks.
+        the string for your SVG into the <em>SVG Input</em> field to generate
+        the <em>CSS Output</em> that corresponds with the <em>Button HTML</em>
+        for your site. You can also use the <em>Example Listener</em> to get 
+        started handling clicks.
       </p>
 
       <div id="warning" class="red"></div>
@@ -282,20 +288,25 @@ ul > :where(:not(:first-child)) {
         </div>
       </div>
 
+      <details class="flow">
+        <summary>Details</summary>
       <p>
         The CSS uses <code>mask-image</code> and associated properties. 
-        That allows the buttons to use CSS variables (as compared to 
-        <code>background-image</code> which requires changes to colors
-        to be made directly in the source SVG string)
+        It allows buttons to use CSS variables (as compared to 
+        <code>background-image</code> which requires changes 
+        the source SVG directly to do things like change colors).
       </p>
 
       <p>
         I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-        They are free, open-source and use the 
+        They are free, open-source, and use the 
         <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
         (Note: some of their SVGs have an issue that prevents them
-        from showing up. See <em>Issues</em> below for how to fix that)
+          from working properly with <code>mask-image</code>. 
+          See <em>Issues</em> below for how to fix that.)
       </p>
+
+      </details>
 
       <h2>Button Customization</h2>
 
@@ -377,16 +388,13 @@ ul > :where(:not(:first-child)) {
       <h2>TODO</h2>
       <ul>
         <li>
-          Find a better color palette
-        </li>
-        <li>
           Figure out if an example aria label on the buttons makes sense
         </li>
         <li>
           Save setting so refreshing the page doesn't reset the options
         </li>
         <li>
-          Include icon sets directly
+          Include icon samples or sets directly
         </li>
         <li>
           Maybe add color input selectors
