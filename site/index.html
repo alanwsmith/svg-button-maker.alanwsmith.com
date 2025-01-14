@@ -199,13 +199,34 @@ img {
   display: block;
 }
 
+.items {
+  border: 1px solid var(--accent-color-1);
+  border-radius: var(--large-border-radius);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  padding: 1rem;
+}
+
+.items textarea {
+  width: 90%;
+}
+
+.items input[type="text"] {
+  width: 90%;
+}
+
+
+label {
+  display: block;
+  padding-bottom: 0.5rem;
+}
+
 main {
   align-items: center;
-  display: grid;
-  grid-template-columns: 1fr;
   margin-inline: auto;
   padding-bottom: var(--xlarge-padding);
-  width: var(--large-width);
+  max-width: var(--large-width);
 }
 
 .red {
@@ -231,54 +252,123 @@ ul > :where(:not(:first-child)) {
       <hgroup>
         <h1>Alan's SVG Button Maker</h1>
       </hgroup>
+      
+      <p>
+        This tool converts SVGs into CSS based buttons. Paste
+        your SVG string into the <em>SVG Input</em> field to generate
+        the <em>CSS Output</em> to apply to the <em>Button HTML</em> on your page. 
+      </p>
 
       <div id="warning" class="red"></div>
+      <div class="items">
+        <div>
+          <label for="svgInput">SVG Input</label>
+          <textarea id="svgInput" rows="7"></textarea>
+        </div>
+        <div>
+          <label for="cssOutput">CSS Output</label>
+          <textarea id="cssOutput" rows="7"></textarea>
+        </div>
+        <div>
+          <label for="buttonHTML">Button HTML</label>
+          <input type="text" id="buttonHTML" />
+        </div>
+        <div>
+          <label>Example Output</label>
+          <div class="exampleWrapper"></div>
+        </div>
+      </div>
 
-      <label for="svgInput">SVG Input</label>
-      <textarea id="svgInput" cols="50" rows="8"></textarea>
+      <p>
+        The CSS uses <code>mask-image</code> and associated properties. 
+        That allows the buttons to use CSS variables (as compared to 
+        <code>background-image</code> which requires changes to colors
+        to be made directly in the source SVG string)
+      </p>
 
-      <h3>Example Output</h3>
-      <div id="exampleWrapper"></div>
+      <p>
+        I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
+        They are free and open-source, using the MIT License. My understanding
+        is that means there is no requirement to provide attribution when
+        using them. (Note: some of their SVGs have an issue that prevents them
+        from showing up. See <em>Issues</em> below for how to fix that)
+      </p>
 
-      <label for="cssOutput">CSS Output</label>
-      <textarea id="cssOutput" cols="50" rows="8"></textarea>
 
-      <label for="testHTML">Test HTML</label>
-      <input type="text" id="testHTML" />
-
-      <label for="buttonSelector">Button Selector</label>
-      <input type="text" id="buttonSelector" />
-
-      <label for="childSelector">Child Selector</label>
-      <input type="text" id="childSelector" />
-
-      <label for="buttonWidth">Button Width</label>
-      <input type="text" id="buttonWidth" />
-
-      <label for="buttonHeight">Button Height</label>
-      <input type="text" id="buttonHeight" />
-
-      <label for="borderColorVar">Border Color Variable Name</label>
-      <input type="text" id="borderColorVar" />
-
-      <label for="borderColorValue">Border Color Value</label>
-      <input type="text" id="borderColorValue" />
-
-      <label for="buttonColorVar">Button Color Variable Name</label>
-      <input type="text" id="buttonColorVar" />
-
-      <label for="buttonColorValue">Button Color Value</label>
-      <input type="text" id="buttonColorValue" />
-
-      <label for="backgroundColorVar">Background Color Variable Name</label>
-      <input type="text" id="backgroundColorVar" />
-
-      <label for="backgroundColorValue">Background Color Value</label>
-      <input type="text" id="backgroundColorValue" />
-
+      <h3>Button Customization</h3>
+      <div class="items">
+        <fieldset>
+          <legend>Button Selector</legend>
+          <div>
+            <label for="buttonSelector">Primary</label>
+            <input type="text" id="buttonSelector" />
+          </div>
+          <div>
+            <label for="childSelector">Secondary</label>
+            <input type="text" id="childSelector" />
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Button Size</legend>
+          <div>
+            <label for="buttonWidth">Width</label>
+            <input type="text" id="buttonWidth" />
+          </div>
+          <div>
+            <label for="buttonHeight">Height</label>
+            <input type="text" id="buttonHeight" />
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Button Primary Color</legend>
+          <div>
+            <label for="buttonColorVar">Variable Name</label>
+            <input type="text" id="buttonColorVar" />
+          </div>
+          <div>
+            <label for="buttonColorValue">Value</label>
+            <input type="text" id="buttonColorValue" />
+          </div>
+        </fieldset>
+        <div>
+          <label>Example Output</label>
+          <div class="exampleWrapper"></div>
+        </div>
+        <fieldset>
+          <legend>Button Border Color</legend>
+          <div>
+            <label for="borderColorVar">Variable Name</label>
+            <input type="text" id="borderColorVar" />
+          </div>
+          <div>
+            <label for="borderColorValue">Value</label>
+            <input type="text" id="borderColorValue" />
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Button Background Color</legend>
+          <div>
+            <label for="backgroundColorVar">Variable Name</label>
+            <input type="text" id="backgroundColorVar" />
+          </div>
+          <div>
+            <label for="backgroundColorValue">Value</label>
+            <input type="text" id="backgroundColorValue" />
+          </div>
+        </fieldset>
+      </div>
 
       <h3>Icons</h3>
       <p>Check out <a href="https://iconoir.com/">Iconoir</a> for free, open-source icons.</p>
+
+      <h2>Issues</h2>
+      <ul>
+        <li>
+          Some icons from <a href="https://iconoir.com/">Iconoir</a> have SVG elements with 
+          multiple <code>stroke-width</code> attributes. These don't render in my mac 
+          browsers. Manually removing the extra <code>stroke-width</code> fixes them.
+        </li>
+      </ul>
 
       <h2>Notes</h2>
       <ul>
