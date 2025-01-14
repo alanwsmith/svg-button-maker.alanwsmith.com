@@ -1,7 +1,6 @@
 let state = {}
 
 function init() {
-  // runTests()
   state.stylesheet = document.createElement("style")
   document.head.appendChild(state.stylesheet)
   prepElements()
@@ -99,37 +98,6 @@ function prepElements() {
     state[el] = document.querySelector(`#${el}`)
     state[el].addEventListener("input", doUpdate)
   })
-}
-
-function runTests() {
-  let failedTests = 0
-  console.log("Running test cases")
-  const testCases = [
-    [
-      `<svg></svg>`, 
-      `background-image: url("data:image/svg+xml;utf8,<svg></svg>");\nbackground-size: contain;\nbackground-position: center;\nbackground-repeat: no-repeat;`
-    ],
-    [
-      `<?xml version="1.0" encoding="UTF-8"?><svg></svg>`, 
-      `background-image: url("data:image/svg+xml;utf8,<svg></svg>");\nbackground-size: contain;\nbackground-position: center;\nbackground-repeat: no-repeat;`
-    ],
-  ]
-
-  testCases.forEach((testCase, testIndex) => {
-    const output = convert(testCase[0])
-    if (output !== testCase[1]) {
-      failedTests += 1
-      console.error(`TEST FAILED: Index ${testIndex}`)
-      console.error(`Expected: ${testCase[1]}`)
-      console.error(`Got: ${output}`)
-    }
-  })
-
-  if (failedTests > 0) {
-    const warningEl = document.querySelector("#warning")
-    warningEl.innerHTML = "WARNING: Some Tests Cases Failed. This shouldn't happen unless you're working on the script. Check the console for details."
-  }
-
 }
 
 export { init }
