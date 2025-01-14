@@ -26,8 +26,6 @@
     -->
 
     <style>
-
-
 :root {
   --accent-color-1: green;
   --accent-color-2: purple;
@@ -83,11 +81,6 @@
   --xxxlarge-width: min(86rem, 96%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
 *, 
 *::before, 
 *::after {
@@ -100,10 +93,6 @@
 
 ::marker {
   color: var(--accent-color-2);
-}
-
-html {
-  color-scheme: light dark;
 }
 
 body {
@@ -128,8 +117,8 @@ a:hover, a:focus {
   color: var(--title-color);
 }
 
-.blue {
-  color: blue;
+.copyButtonWrapper { 
+  text-align: right;
 }
 
 fieldset {
@@ -147,10 +136,6 @@ footer {
   text-align: center;
 }
 
-.green {
-  color: green;
-}
-
 h2, h3, h4, h5, h6 {
   color: var(--headline-color);
   line-height: 1.1;
@@ -161,7 +146,10 @@ h2, h3, h4, h5, h6 {
 h1 {
   color: var(--title-color);
   font-size: var(--xxxlarge-font-size);
+  font-weight: 900;
+  line-height: 1.1;
   margin-top: 1.0em;
+  text-wrap: balance;
 }
 
 h2 {
@@ -205,11 +193,11 @@ img {
 }
 
 .items textarea {
-  width: 90%;
+  width: 100%;
 }
 
 .items input[type="text"] {
-  width: 90%;
+  width: 100%;
   margin-bottom: 0.5rem;
 }
 
@@ -225,12 +213,15 @@ main {
   max-width: var(--large-width);
 }
 
-.red {
-  color: red;
-}
-
 section {
   --flow-space: 1.3em;
+}
+
+.no-wrap{
+  white-space: pre; 
+  overflow-wrap: normal;
+  overflow-x: visible; 
+  overscroll-behavior-x: none;
 }
 
 ul > :where(:not(:first-child)) {
@@ -267,12 +258,13 @@ ul > :where(:not(:first-child)) {
         </div>
         <div>
           <label for="cssOutput">CSS Output</label>
-          <textarea id="cssOutput" rows="7" readonly></textarea>
+          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
           <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
         </div>
         <div>
           <label for="buttonHTML">Button HTML</label>
           <input type="text" id="buttonHTML" />
+          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </div>
         <div>
           <label>Example Output</label>
@@ -280,7 +272,8 @@ ul > :where(:not(:first-child)) {
         </div>
         <div>
           <label for="eventListener">Example Listener</label>
-          <textarea id="eventListener" rows="7"></textarea>
+          <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
+          <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
         </div>
         <div>
           <label>Listener Output</label>

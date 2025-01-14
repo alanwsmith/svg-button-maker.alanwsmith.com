@@ -8,6 +8,8 @@ function init() {
   prepElements()
   loadInitialValues()
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
+  addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
+  addCopyButtonTo("#eventListener", "#listenerCopyButtonWrapper")
   doUpdate()
 }
 
@@ -37,41 +39,6 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
       }, 2000, event.target)
   })
   buttonParentEl.appendChild(copyButton)
-
-  // codeExamples.forEach((example, index) => {
-  //   console.log(example)
-
-    /*
-    const dataId = `block-${index}`
-    example.dataset.codeblockexample = dataId
-    const copyButton = document.createElement("button")
-    copyButton.innerHTML = "Example Copy Button"
-    copyButton.classList.add("code-copy-example-button")
-    copyButton.dataset.codeblockexamplebutton = dataId
-    copyButton.addEventListener("click", async (event) => {
-      const el = event.target
-      const captureId = el.dataset.codeblockexamplebutton
-      console.log(`Copying example code block: ${captureId}`)
-      const codePreEl = document.querySelector(
-        `[data-codeblockexample="${captureId}"] pre`
-      )
-      try {
-        await navigator.clipboard.writeText(
-          codePreEl.innerText
-        )
-        el.innerHTML = "Copied"
-      } catch (err) {
-        el.innerHTML = "Error copying"
-      }
-      setTimeout((theButton) => {
-        theButton.innerHTML = "Example Copy Button"
-      }, 2000, el)
-    })
-    example.appendChild(copyButton)
-    */
-
-//  })
-
 }
 
 function convert(input) {
@@ -116,13 +83,13 @@ function doUpdate() {
 }
 
 function loadInitialValues() {
-  state.pageCSS.value = `--accent-color-1: #6F1A07;
---accent-color-2: #2B2118;
---background-color: #112;
+  state.pageCSS.value = `--accent-color-2: #6F1A07;
+--accent-color-1: #2B2118;
+--background-color: #F9EAE1;
 --button-border-radius: 0.7rem;
---headline-color: #D1BE9C;
---text-color: #F9EAE1;
---title-color: #D1BE9C;`
+--headline-color: #112;
+--text-color: #112;
+--title-color: #112;`
   state.svgInput.value = `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="0.5"><path d="M6.90588 4.53682C6.50592 4.2998 6 4.58808 6 5.05299V18.947C6 19.4119 6.50592 19.7002 6.90588 19.4632L18.629 12.5162C19.0211 12.2838 19.0211 11.7162 18.629 11.4838L6.90588 4.53682Z" fill="#000000" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
   state.buttonHTML.value = `<button class="play-button"><div><div></button>`
   state.buttonSelector.value = '.play-button'
