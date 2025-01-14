@@ -13,12 +13,12 @@
     <meta name="theme-color" content="#000000" />
 
     <title>Alan's SVG To CSS Converter</title>
-    <meta name="description" content="A single purpose tool that turns an SVG into CSS" />
+    <meta name="description" content="A tool that turns SVGs into HTML/CSS buttons" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:description" content="A single purpose tool that turns an SVG into CSS" />
-    <meta property="og:title" content="Alan's SVG To CSS Converter" />
-    <meta property="og:url" content="https://svg-to-css.alanwsmith.com/" /> 
-    <meta property="og:image" content="https://svg-to-css.alanwsmith.com/images/og-image.jpg" />
+    <meta property="og:description" content="A tool that turns SVGs into HTML/CSS buttons" />
+    <meta property="og:title" content="Alan's SVG Button Maker" />
+    <meta property="og:url" content="https://svg-button-maker.alanwsmith.com/" /> 
+    <meta property="og:image" content="https://svg-button-maker.alanwsmith.com/images/og-image.jpg" />
 
     <!--
     <link rel="stylesheet" href="/styles/yt-player.css" />
@@ -29,7 +29,7 @@
 
 :root {
   --background-color: #121;
-  --primary-color: #aaa;;
+  --primary-color: #aaa;
   --secondary-color: blue;
   --accent-color-1: green;
   --accent-color-2: purple;
@@ -229,20 +229,19 @@ ul > :where(:not(:first-child)) {
 
     <main class="flow"> 
       <hgroup>
-        <h1>Alan's SVG To CSS Converter</h1>
+        <h1>Alan's SVG Button Maker</h1>
       </hgroup>
 
       <div id="warning" class="red"></div>
 
-      <h2>Button Maker</h2>
-
-      <p>This is the tool I'm using to make buttons from SVGs. 
-        I'll make it more generic features over time. For now,  
-        it's pretty specific to my use case.
-      </p>
+      <label for="svgInput">SVG Input</label>
+      <textarea id="svgInput" cols="50" rows="8"></textarea>
 
       <h3>Example Output</h3>
       <div id="exampleWrapper"></div>
+
+      <label for="cssOutput">CSS Output</label>
+      <textarea id="cssOutput" cols="50" rows="8"></textarea>
 
       <label for="testHTML">Test HTML</label>
       <input type="text" id="testHTML" />
@@ -277,11 +276,6 @@ ul > :where(:not(:first-child)) {
       <label for="backgroundColorValue">Background Color Value</label>
       <input type="text" id="backgroundColorValue" />
 
-      <label for="svgInput">SVG Input</label>
-      <textarea id="svgInput" cols="50" rows="8"></textarea>
-
-      <label for="cssOutput">CSS Output</label>
-      <textarea id="cssOutput" cols="50" rows="8"></textarea>
 
       <h3>Icons</h3>
       <p>Check out <a href="https://iconoir.com/">Iconoir</a> for free, open-source icons.</p>
