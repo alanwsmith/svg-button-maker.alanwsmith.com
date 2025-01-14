@@ -25,6 +25,7 @@ ${state.buttonSelector.value} {
   width: ${state.buttonWidth.value};
   height: ${state.buttonHeight.value};
   border: 1px solid var(${state.borderColorVar.value});
+  border-radius: var(--button-border-radius);
   background: var(${state.backgroundColorVar.value});
 }
 
@@ -49,14 +50,14 @@ function doUpdate() {
 }
 
 function loadInitialValues() {
-  state.pageCSS.value = `--accent-color-1: green;
---accent-color-2: purple;
---accent-color-3: goldenrod;
---background-color: goldenrod;
---headline-color: #432;
---reverse-color: red;
---text-color: #aaa;
---title-color: #234;`
+  state.pageCSS.value = `--accent-color-1: #6F1A07;
+--accent-color-2: #2B2118;
+--background-color: #112;
+--button-border-radius: 0.7rem;
+--headline-color: #D1BE9C;
+--reverse-color: #eee;
+--text-color: #F9EAE1;
+--title-color: #D1BE9C;`
   state.svgInput.value = `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="0.5"><path d="M6.90588 4.53682C6.50592 4.2998 6 4.58808 6 5.05299V18.947C6 19.4119 6.50592 19.7002 6.90588 19.4632L18.629 12.5162C19.0211 12.2838 19.0211 11.7162 18.629 11.4838L6.90588 4.53682Z" fill="#000000" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
   state.buttonHTML.value = `<button class="play-button"><div><div></button>`
   state.buttonSelector.value = '.play-button'
@@ -65,7 +66,7 @@ function loadInitialValues() {
   state.buttonHeight.value = '2rem'
   state.buttonColorValue.value = 'var(--accent-color-1)'
   state.buttonColorVar.value = '--button-color'
-  state.borderColorValue.value = 'var(--reverse-color)'
+  state.borderColorValue.value = 'var(--accent-color-1)'
   state.borderColorVar.value = '--button-border-color'
   state.backgroundColorValue.value = 'var(--accent-color-2)'
   state.backgroundColorVar.value = '--button-background-color'

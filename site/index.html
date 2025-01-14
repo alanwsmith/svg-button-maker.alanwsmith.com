@@ -31,7 +31,6 @@
 :root {
   --accent-color-1: green;
   --accent-color-2: purple;
-  --accent-color-3: goldenrod;
   --background-color: #121;
   --headline-color: #432;
   --reverse-color: red;
@@ -100,7 +99,7 @@
 }
 
 ::marker {
-  color: var(--accent-color-1);
+  color: var(--accent-color-2);
 }
 
 html {
@@ -109,7 +108,7 @@ html {
 
 body {
   background-color: var(--background-color);
-  color: var(--primary-color);
+  color: var(--text-color);
   display: grid;
   font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   font-weight: normal;
@@ -126,13 +125,16 @@ a {
 }
 
 a:hover, a:focus {
-  color: var(--accent-color-2);
+  color: var(--title-color);
 }
 
 .blue {
   color: blue;
 }
 
+
+
+/*
 button {
   background: none;
   border: 1px solid var(--accent-color-1);
@@ -142,6 +144,7 @@ button {
   font-size: var(--small-font-size);
   outline: none;
 }
+*/
 
 fieldset {
   border-radius: var(--large-border-radius);
@@ -162,14 +165,15 @@ footer {
   color: green;
 }
 
-h1, h2, h3, h4 {
+h2, h3, h4, h5, h6 {
+  color: var(--headline-color);
   line-height: 1.1;
-  color: var(--secondary-color);
   text-wrap: balance;
   font-weight: 900;
 }
 
 h1 {
+  color: var(--title-color);
   font-size: var(--xxxlarge-font-size);
   margin-top: 1.0em;
 }
@@ -383,6 +387,9 @@ ul > :where(:not(:first-child)) {
 
       <h2>TODO</h2>
       <ul>
+        <li>
+          Find a better color palette
+        </li>
         <li>
           Figure out if an example aria label on the buttons makes sense
         </li>
