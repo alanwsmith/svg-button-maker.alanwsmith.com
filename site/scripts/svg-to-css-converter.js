@@ -7,7 +7,71 @@ function init() {
   document.head.appendChild(state.script)
   prepElements()
   loadInitialValues()
+  addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   doUpdate()
+}
+
+function addCopyButtonTo(codeSelector, buttonParentSelector) {
+  const codeEl = document.querySelector(codeSelector)
+  const buttonParentEl = document.querySelector(buttonParentSelector)
+  const copyButton = document.createElement("button")
+  copyButton.innerHTML = "Copy"
+  copyButton.dataset.target = codeSelector
+  copyButton.addEventListener("click", async (event) => {
+    const elToCopy = document.querySelector(event.target.dataset.target)
+    console.log(elToCopy)
+      try {
+        let content
+        if (elToCopy.value) {
+          content = elToCopy.value
+        } else {
+          content = elToCopy.innerText
+        }
+        await navigator.clipboard.writeText(content)
+        event.target.innerHTML = "Copied"
+      } catch (err) {
+        event.target.innerHTML = "Error copying"
+      }
+      setTimeout((theButton) => {
+        event.target.innerHTML = "Copy"
+      }, 2000, event.target)
+  })
+  buttonParentEl.appendChild(copyButton)
+
+  // codeExamples.forEach((example, index) => {
+  //   console.log(example)
+
+    /*
+    const dataId = `block-${index}`
+    example.dataset.codeblockexample = dataId
+    const copyButton = document.createElement("button")
+    copyButton.innerHTML = "Example Copy Button"
+    copyButton.classList.add("code-copy-example-button")
+    copyButton.dataset.codeblockexamplebutton = dataId
+    copyButton.addEventListener("click", async (event) => {
+      const el = event.target
+      const captureId = el.dataset.codeblockexamplebutton
+      console.log(`Copying example code block: ${captureId}`)
+      const codePreEl = document.querySelector(
+        `[data-codeblockexample="${captureId}"] pre`
+      )
+      try {
+        await navigator.clipboard.writeText(
+          codePreEl.innerText
+        )
+        el.innerHTML = "Copied"
+      } catch (err) {
+        el.innerHTML = "Error copying"
+      }
+      setTimeout((theButton) => {
+        theButton.innerHTML = "Example Copy Button"
+      }, 2000, el)
+    })
+    example.appendChild(copyButton)
+    */
+
+//  })
+
 }
 
 function convert(input) {

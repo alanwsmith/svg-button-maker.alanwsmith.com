@@ -132,20 +132,6 @@ a:hover, a:focus {
   color: blue;
 }
 
-
-
-/*
-button {
-  background: none;
-  border: 1px solid var(--accent-color-1);
-  border-radius: var(--medium-border-radius);
-  color: var(--accent-color-1);
-  cursor: pointer;
-  font-size: var(--small-font-size);
-  outline: none;
-}
-*/
-
 fieldset {
   border-radius: var(--large-border-radius);
 }
@@ -281,7 +267,8 @@ ul > :where(:not(:first-child)) {
         </div>
         <div>
           <label for="cssOutput">CSS Output</label>
-          <textarea id="cssOutput" rows="7"></textarea>
+          <textarea id="cssOutput" rows="7" readonly></textarea>
+          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
         </div>
         <div>
           <label for="buttonHTML">Button HTML</label>
