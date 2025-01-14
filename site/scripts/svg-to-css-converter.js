@@ -109,13 +109,16 @@ function loadInitialValues() {
     exampleWrapper.innerHTML = state.buttonHTML.value
   })
   state.eventListener.value = `let clickCount = 0
-const clickCountEl = document.querySelector(".clickCount")
 const buttonNodes = document.querySelectorAll("${state.buttonSelector.value}")
 const buttonEls = [...buttonNodes]
 buttonEls.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
     clickCount += 1
-    clickCountEl.innerHTML = "Clicks: " + clickCount
+    const clickCountNodes = document.querySelectorAll(".clickCount")
+    const clickCountEls = [...clickCountNodes]
+    clickCountEls.forEach((clickCountEl) => {
+      clickCountEl.innerHTML = "Clicks: " + clickCount
+    })
   })
 })`
 }
