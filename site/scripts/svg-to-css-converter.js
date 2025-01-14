@@ -3,14 +3,14 @@ let state = {}
 function init() {
   state.stylesheet = document.createElement("style")
   document.head.appendChild(state.stylesheet)
+  state.script = document.createElement("script")
+  document.head.appendChild(state.script)
   prepElements()
   loadInitialValues()
   doUpdate()
 }
 
 function convert(input) {
-  //let parts = input.split("?>")
-  //let initial = parts.length === 1 ? parts[0] : parts[1]
   let converted = encodeURIComponent(input)
   let output = `:root {
 ${state.pageCSS.value}
@@ -20,12 +20,13 @@ ${state.pageCSS.value}
 }
 
 ${state.buttonSelector.value} {
-  margin: 0;
-  width: ${state.buttonWidth.value};
-  height: ${state.buttonHeight.value};
+  background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
-  background: var(${state.backgroundColorVar.value});
+  cursor: pointer;
+  height: ${state.buttonHeight.value};
+  margin: 0;
+  width: ${state.buttonWidth.value};
 }
 
 ${state.buttonSelector.value} ${state.childSelector.value} {
@@ -46,6 +47,8 @@ function doUpdate() {
   let results = convert(state.svgInput.value)
   state.cssOutput.value = results
   state.stylesheet.textContent = results
+  state.script.innerHTML = state.eventListener.value
+  //state.script.innerText = `console.log("pint")`
 }
 
 function loadInitialValues() {
@@ -71,10 +74,18 @@ function loadInitialValues() {
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
-    console.log(exampleWrapper)
-    console.log(state.buttonHTML.value)
     exampleWrapper.innerHTML = state.buttonHTML.value
   })
+  state.eventListener.value = `let clickCount = 0
+const clickCountEl = document.querySelector(".clickCount")
+const buttonNodes = document.querySelectorAll("${state.buttonSelector.value}")
+const buttonEls = [...buttonNodes]
+buttonEls.forEach((buttonEl) => {
+  buttonEl.addEventListener("click", (event) => {
+    clickCount += 1
+    clickCountEl.innerHTML = "Clicks: " + clickCount
+  })
+})`
 }
 
 function prepElements() {
@@ -93,6 +104,7 @@ function prepElements() {
     "svgInput",
     "buttonHTML",
     "pageCSS",
+    "eventListener",
   ]
   els.forEach((el) => {
     state[el] = document.querySelector(`#${el}`)
