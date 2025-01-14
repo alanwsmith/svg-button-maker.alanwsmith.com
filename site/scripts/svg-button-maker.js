@@ -67,7 +67,7 @@ function addSampleButtonListeners() {
     sampleButtonEl.addEventListener("click", (event) => {
       state.buttonHTML.value = `<button class="${event.target.dataset.kind}"></button>`
       state.svgInput.value = samples[event.target.dataset.kind].svg
-      state.buttonSelector.value = `.${event.target.dataset.kind}`
+      state.buttonSelector.value = `${event.target.dataset.kind}`
       doUpdate()
     })
   })
@@ -90,7 +90,7 @@ ${pageVarsString}
 }
 `
 
-  let buttonCSS = `${state.buttonSelector.value} {
+  let buttonCSS = `.${state.buttonSelector.value} {
   background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
@@ -102,7 +102,7 @@ ${pageVarsString}
   position: relative;
 }
 
-${state.buttonSelector.value}:after {
+.${state.buttonSelector.value}:after {
   background: var(${state.buttonColorVar.value});
   content: "";
   height: 100%;
@@ -128,12 +128,13 @@ function doUpdate() {
   state.script.innerHTML = state.eventListener.value
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
-  const className = state.buttonSelector.value.replace(/^\./, "")
+  const primaryClass = state.buttonSelector.value
   exampleButtonEls.forEach((exampleButtonEl) => {
     exampleButtonEl.removeAttribute("class")
     exampleButtonEl.classList.add("example-button")
-    exampleButtonEl.classList.add(className)
+    exampleButtonEl.classList.add(primaryClass)
   })
+  state.buttonHTML.value = `<button class="${primaryClass}"></button>`
 }
 
 function loadInitialValues() {
@@ -146,7 +147,7 @@ function loadInitialValues() {
 --title-color: #112;`
   state.svgInput.value = samples['play-button'].svg
   state.buttonHTML.value = `<button class="play-button"></button>`
-  state.buttonSelector.value = '.play-button'
+  state.buttonSelector.value = 'play-button'
   state.buttonWidth.value = '3.5rem'
   state.buttonHeight.value = '2rem'
   state.buttonColorValue.value = 'var(--accent-color-1)'
@@ -164,7 +165,7 @@ function loadInitialValues() {
     exampleWrapper.appendChild(exampleButton)
   })
   state.eventListener.value = `let clickCount = 0
-const buttonNodes = document.querySelectorAll("${state.buttonSelector.value}")
+const buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
 const buttonEls = [...buttonNodes]
 buttonEls.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
