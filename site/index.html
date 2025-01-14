@@ -281,8 +281,8 @@ ul > :where(:not(:first-child)) {
 
       <h2>Samples</h2>
       <div class="sampleWrapper">
-        <button class="play-button sample-button" data-kind="play-button"></button>
-        <button class="pause-button sample-button" data-kind="pause-button"></button>
+        <button class="sample-play-button sample-button" data-kind="play-button"></button>
+        <button class="sample-pause-button sample-button" data-kind="pause-button"></button>
         <!--
         <button class="play-button sample-button" data-key="play-button"><div></div></button>
         <button class="pause-button sample-button" data-key="pause-button"><div></div></button>
@@ -444,13 +444,30 @@ ul > :where(:not(:first-child)) {
         </li>
       </ul>
 
-      <h2>Issues</h2>
+      <h2>Notes</h2>
       <ul>
         <li>
-          The CSS Selector in Button Customizations only works with classes (i.e.
+          The CSS Selector in Button Customizations only works with single classes (i.e.
           it doesn't work with tag names or ids). I don't plan to address that
           since I'm always using classes regardless. 
         </li>
+        <li>
+          Changing the colors in the Button Customization section affects the 
+          sample buttons. Change the size does not. This is by design as the
+          samples are using the pages CSS variables for colors while sizing
+          it up to the individual buttons needs. 
+        </li>
+        <li>
+          The Sample buttons prepend their button names with <code>sample-</code>
+          to avoid using the styles produced by the tool directly. If you prepend
+          the CSS Selector in the Button Customization section the same way it'll
+          effect the corresponding sample including size adjustments. 
+        </li>
+      </ul>
+
+
+      <h2>Issues</h2>
+      <ul>
         <li>
           Some icons from <a href="https://iconoir.com/">Iconoir</a> have SVG elements with 
           multiple <code>stroke-width</code> attributes. These don't render in my mac 

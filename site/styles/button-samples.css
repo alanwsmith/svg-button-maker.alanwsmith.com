@@ -1,4 +1,4 @@
-.pause-button {
+.sample-pause-button {
   background: var(--button-background-color);
   border: 1px solid var(--button-border-color);
   border-radius: var(--button-border-radius);
@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.pause-button:after {
+.sample-pause-button:after {
   background: var(--button-color);
   content: "";
   height: 100%;
@@ -25,7 +25,7 @@
   width: 100%;
 }
 
-.play-button {
+.sample-play-button {
   background: var(--button-background-color);
   border: 1px solid var(--button-border-color);
   border-radius: var(--button-border-radius);
@@ -37,7 +37,7 @@
   position: relative;
 }
 
-.play-button:after {
+.sample-play-button:after {
   background: var(--button-color);
   content: "";
   height: 100%;
