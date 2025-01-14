@@ -1,6 +1,12 @@
 let state = {}
 
 const samples = {
+  "pause-button": {
+    "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="2"><path d="M6 18.4V5.6C6 5.26863 6.26863 5 6.6 5H9.4C9.73137 5 10 5.26863 10 5.6V18.4C10 18.7314 9.73137 19 9.4 19H6.6C6.26863 19 6 18.7314 6 18.4Z" fill="#000000" stroke="#000000" stroke-width="2"></path><path d="M14 18.4V5.6C14 5.26863 14.2686 5 14.6 5H17.4C17.7314 5 18 5.26863 18 5.6V18.4C18 18.7314 17.7314 19 17.4 19H14.6C14.2686 19 14 18.7314 14 18.4Z" fill="#000000" stroke="#000000" stroke-width="2"></path></svg>`
+  },
+  "play-button": {
+    "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="2"><path d="M6.90588 4.53682C6.50592 4.2998 6 4.58808 6 5.05299V18.947C6 19.4119 6.50592 19.7002 6.90588 19.4632L18.629 12.5162C19.0211 12.2838 19.0211 11.7162 18.629 11.4838L6.90588 4.53682Z" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
+  },
   "rewind-button": {
     "svg": `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" stroke-width="2" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M11 6L5 12L11 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 6L13 12L19 18" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
   }
@@ -53,7 +59,10 @@ function addSampleButtonListeners() {
   const sampleButtonEls = [...sampleButtonNodes]
   sampleButtonEls.forEach((sampleButtonEl) => {
     sampleButtonEl.addEventListener("click", (event) => {
-      console.log(event.target)
+      state.buttonHTML.value = `<button class="${event.target.dataset.kind}"></button>`
+      state.svgInput.value = samples[event.target.dataset.kind].svg
+      state.buttonSelector.value = `.${event.target.dataset.kind}`
+      doUpdate()
     })
   })
 }
@@ -86,7 +95,6 @@ ${state.buttonSelector.value} {
   position: relative;
 }
 
-
 ${state.buttonSelector.value}:after {
   background: var(${state.buttonColorVar.value});
   content: "";
@@ -110,6 +118,15 @@ function doUpdate() {
   state.cssOutput.value = results
   state.stylesheet.textContent = results
   state.script.innerHTML = state.eventListener.value
+  const exampleButtonNodes = document.querySelectorAll(".example-button")
+  const exampleButtonEls = [...exampleButtonNodes]
+  const className = state.buttonSelector.value.replace(/^\./, "")
+  exampleButtonEls.forEach((exampleButtonEl) => {
+    exampleButtonEl.removeAttribute("class")
+    exampleButtonEl.classList.add("example-button")
+    exampleButtonEl.classList.add(className)
+  })
+
 }
 
 function loadInitialValues() {
@@ -120,10 +137,10 @@ function loadInitialValues() {
 --headline-color: #112;
 --text-color: #112;
 --title-color: #112;`
-  state.svgInput.value = `<?xml version="1.0" encoding="UTF-8"?><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000" stroke-width="0.5"><path d="M6.90588 4.53682C6.50592 4.2998 6 4.58808 6 5.05299V18.947C6 19.4119 6.50592 19.7002 6.90588 19.4632L18.629 12.5162C19.0211 12.2838 19.0211 11.7162 18.629 11.4838L6.90588 4.53682Z" fill="#000000" stroke="#000000" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`
+  state.svgInput.value = samples['play-button'].svg
   state.buttonHTML.value = `<button class="play-button"></button>`
   state.buttonSelector.value = '.play-button'
-  state.childSelector.value = 'div'
+  //state.childSelector.value = 'div'
   state.buttonWidth.value = '3.5rem'
   state.buttonHeight.value = '2rem'
   state.buttonColorValue.value = 'var(--accent-color-1)'
@@ -135,7 +152,10 @@ function loadInitialValues() {
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
-    exampleWrapper.innerHTML = state.buttonHTML.value
+    const exampleButton = document.createElement("button")
+    exampleButton.classList.add("example-button")
+    exampleButton.classList.add("play-button")
+    exampleWrapper.appendChild(exampleButton)
   })
   state.eventListener.value = `let clickCount = 0
 const buttonNodes = document.querySelectorAll("${state.buttonSelector.value}")
@@ -163,7 +183,7 @@ function prepElements() {
     "buttonHeight",
     "buttonSelector",
     "buttonWidth",
-    "childSelector",
+    //"childSelector",
     "cssOutput",
     "svgInput",
     "buttonHTML",

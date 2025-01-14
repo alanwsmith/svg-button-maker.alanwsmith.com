@@ -281,7 +281,8 @@ ul > :where(:not(:first-child)) {
 
       <h2>Samples</h2>
       <div class="sampleWrapper">
-        <button class="play-button sample-button" data-key="play-button"></button>
+        <button class="play-button sample-button" data-kind="play-button"></button>
+        <button class="pause-button sample-button" data-kind="pause-button"></button>
         <!--
         <button class="play-button sample-button" data-key="play-button"><div></div></button>
         <button class="pause-button sample-button" data-key="pause-button"><div></div></button>
@@ -307,7 +308,7 @@ ul > :where(:not(:first-child)) {
         </fieldset>
         <fieldset>
           <legend>Button HTML</legend>
-          <textarea id="buttonHTML" rows="3"></textarea>
+          <textarea id="buttonHTML" rows="3" readonly></textarea>
           <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset class="centered-fieldset">
@@ -348,14 +349,10 @@ ul > :where(:not(:first-child)) {
 
       <div class="items">
         <fieldset>
-          <legend>CSS Selector</legend>
+          <legend>CSS</legend>
           <div>
-            <label for="buttonSelector">Primary</label>
+            <label for="buttonSelector">Selector</label>
             <input type="text" id="buttonSelector" />
-          </div>
-          <div>
-            <label for="childSelector">Secondary</label>
-            <input type="text" id="childSelector" />
           </div>
         </fieldset>
         <fieldset>
@@ -449,6 +446,11 @@ ul > :where(:not(:first-child)) {
 
       <h2>Issues</h2>
       <ul>
+        <li>
+          The CSS Selector in Button Customizations only works with classes (i.e.
+          it doesn't work with tag names or ids). I don't plan to address that
+          since I'm always using classes regardless. 
+        </li>
         <li>
           Some icons from <a href="https://iconoir.com/">Iconoir</a> have SVG elements with 
           multiple <code>stroke-width</code> attributes. These don't render in my mac 
