@@ -27,14 +27,16 @@
 
     <style>
 
+
 :root {
-  --background-color: #121;
-  --primary-color: #aaa;
-  --secondary-color: blue;
   --accent-color-1: green;
   --accent-color-2: purple;
   --accent-color-3: goldenrod;
-  --reverse-color: #eee;
+  --background-color: #121;
+  --headline-color: #432;
+  --reverse-color: red;
+  --text-color: #aaa;
+  --title-color: #234;
 
   --xxsmall-margin: 0.1rem;
   --xsmall-margin: 0.3rem;
@@ -214,12 +216,12 @@ img {
 
 .items input[type="text"] {
   width: 90%;
+  margin-bottom: 0.5rem;
 }
-
 
 label {
   display: block;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
 }
 
 main {
@@ -288,14 +290,14 @@ ul > :where(:not(:first-child)) {
 
       <p>
         I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-        They are free and open-source, using the MIT License. My understanding
-        is that means there is no requirement to provide attribution when
-        using them. (Note: some of their SVGs have an issue that prevents them
+        They are free, open-source and use the 
+        <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
+        (Note: some of their SVGs have an issue that prevents them
         from showing up. See <em>Issues</em> below for how to fix that)
       </p>
 
 
-      <h3>Button Customization</h3>
+      <h2>Button Customization</h2>
       <div class="items">
         <fieldset>
           <legend>Button Selector</legend>
@@ -358,9 +360,6 @@ ul > :where(:not(:first-child)) {
         </fieldset>
       </div>
 
-      <h3>Icons</h3>
-      <p>Check out <a href="https://iconoir.com/">Iconoir</a> for free, open-source icons.</p>
-
       <h2>Issues</h2>
       <ul>
         <li>
@@ -370,12 +369,6 @@ ul > :where(:not(:first-child)) {
         </li>
       </ul>
 
-      <h2>Notes</h2>
-      <ul>
-        <li>I'm using mask-image instead of background-image so that css variables can control the color</li>
-        <li>After some effort trying to add a border to an image using mask-image I switched tactics and nested a div. TBD if there's a way to do it with a single element</li>
-      </ul>
-
       <h2>References</h2>
       <ul>
         <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
@@ -383,7 +376,6 @@ ul > :where(:not(:first-child)) {
         <li><a href="https://codepen.io/tigt/post/optimizing-svgs-in-data-uris">Optimizing SVGs in data URIs - Taylor Hunt</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI() - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Base64">Base64 - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
       </ul>
 
