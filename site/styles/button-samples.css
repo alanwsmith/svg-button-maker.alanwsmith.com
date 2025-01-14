@@ -1,3 +1,30 @@
+.sample-download-button {
+  background: var(--button-background-color);
+  border: 1px solid var(--button-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-download-button:after {
+  background: var(--button-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20stroke-width%3D%222%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M6%2020L18%2020%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M12%204V16M12%2016L15.5%2012.5M12%2016L8.5%2012.5%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .sample-fast-forward-button {
   background: var(--button-background-color);
   border: 1px solid var(--button-border-color);

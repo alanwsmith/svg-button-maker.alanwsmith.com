@@ -241,6 +241,10 @@ section {
   --flow-space: 1.3em;
 }
 
+.span-2 {
+  grid-column: 1 / 3;
+}
+
 ul > :where(:not(:first-child)) {
   margin-top: 1em;
 }
@@ -294,32 +298,37 @@ ul > :where(:not(:first-child)) {
       </div>
 
       <div class="items">
-        <fieldset>
+        <fieldset class="span-2">
           <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
-        </fieldset>
-        <fieldset>
-          <legend>CSS Output</legend>
-          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
-          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Button HTML</legend>
-          <textarea id="buttonHTML" rows="3" readonly></textarea>
-          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset class="centered-fieldset">
           <legend>Example Output</legend>
           <div class="exampleWrapper centered"></div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Listener Output</legend>
+          <div class="clickCount centered">Clicks: 0</div>
+        </fieldset>
+        <fieldset>
+          <legend>Root CSS Variables</legend>
+          <textarea id="rootVariables" rows="7" readonly class="no-wrap"></textarea>
+          <div id="rootCopyButtonWrapper" class="copyButtonWrapper"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Button CSS</legend>
+          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
+          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset>
           <legend>Example Listener</legend>
           <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
           <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Listener Output</legend>
-          <div class="clickCount centered">Clicks: 0</div>
+        <fieldset>
+          <legend>Button HTML</legend>
+          <textarea id="buttonHTML" rows="3" readonly></textarea>
+          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
       </div>
 

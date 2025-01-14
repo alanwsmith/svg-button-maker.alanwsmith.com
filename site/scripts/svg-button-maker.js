@@ -82,14 +82,15 @@ function convert(input) {
     return `  ${pv}`
   }).join("\n")
   let converted = encodeURIComponent(input)
-  let output = `:root {
+  let rootVariables = `:root {
 ${pageVarsString}
   ${state.backgroundColorVar.value}: ${state.backgroundColorValue.value};
   ${state.borderColorVar.value}: ${state.borderColorValue.value};
   ${state.buttonColorVar.value}: ${state.buttonColorValue.value};
 }
+`
 
-${state.buttonSelector.value} {
+  let buttonCSS = `${state.buttonSelector.value} {
   background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
@@ -116,13 +117,14 @@ ${state.buttonSelector.value}:after {
   width: 100%;
 }
 `
-  return output
+  return [rootVariables, buttonCSS]
 }
 
 function doUpdate() {
   let results = convert(state.svgInput.value)
-  state.cssOutput.value = results
-  state.stylesheet.textContent = results
+  state.rootVariables.value = results[0]
+  state.cssOutput.value = results[1]
+  state.stylesheet.textContent = `${results[0]}\n${results[1]}`
   state.script.innerHTML = state.eventListener.value
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
@@ -132,7 +134,6 @@ function doUpdate() {
     exampleButtonEl.classList.add("example-button")
     exampleButtonEl.classList.add(className)
   })
-
 }
 
 function loadInitialValues() {
@@ -146,7 +147,6 @@ function loadInitialValues() {
   state.svgInput.value = samples['play-button'].svg
   state.buttonHTML.value = `<button class="play-button"></button>`
   state.buttonSelector.value = '.play-button'
-  //state.childSelector.value = 'div'
   state.buttonWidth.value = '3.5rem'
   state.buttonHeight.value = '2rem'
   state.buttonColorValue.value = 'var(--accent-color-1)'
@@ -189,12 +189,12 @@ function prepElements() {
     "buttonHeight",
     "buttonSelector",
     "buttonWidth",
-    //"childSelector",
     "cssOutput",
     "svgInput",
     "buttonHTML",
     "pageCSS",
     "eventListener",
+    "rootVariables",
   ]
   els.forEach((el) => {
     state[el] = document.querySelector(`#${el}`)
