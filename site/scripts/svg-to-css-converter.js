@@ -42,9 +42,16 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
 }
 
 function convert(input) {
+  // split page vars so they can be shifted over
+  // two spaces to match the formatting of the rest
+  // of the css
+  let pageVars = state.pageCSS.value.split("\n")
+  let pageVarsString = pageVars.map((pv) => {
+    return `  ${pv}`
+  }).join("\n")
   let converted = encodeURIComponent(input)
   let output = `:root {
-${state.pageCSS.value}
+${pageVarsString}
   ${state.backgroundColorVar.value}: ${state.backgroundColorValue.value};
   ${state.borderColorVar.value}: ${state.borderColorValue.value};
   ${state.buttonColorVar.value}: ${state.buttonColorValue.value};
