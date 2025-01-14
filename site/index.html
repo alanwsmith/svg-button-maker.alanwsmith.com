@@ -12,7 +12,7 @@
     <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
     <meta name="theme-color" content="#000000" />
 
-    <title>Alan's SVG To CSS Converter</title>
+    <title>Alan's SVG Button Maker</title>
     <meta name="description" content="A tool that turns SVGs into HTML/CSS buttons" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:description" content="A tool that turns SVGs into HTML/CSS buttons" />
@@ -291,6 +291,14 @@ ul > :where(:not(:first-child)) {
           <label>Example Output</label>
           <div class="exampleWrapper"></div>
         </div>
+        <div>
+          <label for="eventListener">Example Listener</label>
+          <textarea id="eventListener" rows="7"></textarea>
+        </div>
+        <div>
+          <label>Listener Output</label>
+          <div class="clickCount">Clicks: 0</div>
+        </div>
       </div>
 
       <p>
@@ -312,7 +320,7 @@ ul > :where(:not(:first-child)) {
 
       <div class="items">
         <fieldset>
-          <legend>Button Selector</legend>
+          <legend>CSS Selector</legend>
           <div>
             <label for="buttonSelector">Primary</label>
             <input type="text" id="buttonSelector" />
@@ -323,7 +331,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Size</legend>
+          <legend>Size</legend>
           <div>
             <label for="buttonWidth">Width</label>
             <input type="text" id="buttonWidth" />
@@ -334,7 +342,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Primary Color</legend>
+          <legend>Primary Color</legend>
           <div>
             <label for="buttonColorVar">Variable Name</label>
             <input type="text" id="buttonColorVar" />
@@ -349,7 +357,7 @@ ul > :where(:not(:first-child)) {
           <div class="exampleWrapper"></div>
         </div>
         <fieldset>
-          <legend>Button Border Color</legend>
+          <legend>Border Color</legend>
           <div>
             <label for="borderColorVar">Variable Name</label>
             <input type="text" id="borderColorVar" />
@@ -360,7 +368,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Button Background Color</legend>
+          <legend>Background Color</legend>
           <div>
             <label for="backgroundColorVar">Variable Name</label>
             <input type="text" id="backgroundColorVar" />
@@ -382,20 +390,6 @@ ul > :where(:not(:first-child)) {
         <div>
           <label>Example Output</label>
           <div class="exampleWrapper"></div>
-        </div>
-      </div>
-
-      <h2>Event Listener Example</h2>
-
-      <div class="items">
-        <div>
-          <label for="eventListener">JavaScript</label>
-          <textarea id="eventListener" rows="7"></textarea>
-        </div>
-        <div>
-          <label>Example Output</label>
-          <div class="exampleWrapper"></div>
-          <div class="clickCount">Clicks: 0</div>
         </div>
       </div>
 
