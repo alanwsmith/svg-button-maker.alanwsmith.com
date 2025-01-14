@@ -83,8 +83,8 @@ function doUpdate() {
 }
 
 function loadInitialValues() {
-  state.pageCSS.value = `--accent-color-2: #6F1A07;
---accent-color-1: #2B2118;
+  state.pageCSS.value = `--accent-color-1: #A8763E;
+--accent-color-2: #F7F3E3;
 --background-color: #F9EAE1;
 --button-border-radius: 0.7rem;
 --headline-color: #112;
