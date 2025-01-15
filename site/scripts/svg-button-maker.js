@@ -110,23 +110,16 @@ ${pageVarsString}
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
   cursor: pointer;
-  height: ${state.buttonHeight.value};
+  height: var(--button-height);
   margin: 0;
   padding: 0;
-  width: ${state.buttonWidth.value};
+  width: var(--button-width);
   position: relative;
 }
 
 .${state.buttonSelector.value}:hover {
   background: var(${state.backgroundHoverColorVar.value});
   border: 1px solid var(${state.borderHoverColorVar.value});
-  border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: ${state.buttonHeight.value};
-  margin: 0;
-  padding: 0;
-  width: ${state.buttonWidth.value};
-  position: relative;
 }
 
 .${state.buttonSelector.value}:after {
@@ -146,17 +139,6 @@ ${pageVarsString}
 
 .${state.buttonSelector.value}:hover:after {
   background: var(${state.buttonHoverColorVar.value});
-  content: "";
-  height: 100%;
-  left: 0;
-  margin: 0;
-  mask-image: url("data:image/svg+xml;utf8,${converted}");
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  position: absolute;
-  top: 0;
-  width: 100%;
 }
 
 `
@@ -192,15 +174,15 @@ function loadInitialValues() {
 --button-base-border-color: var(--accent-color-1);
 --button-base-color: var(--accent-color-1);
 --button-border-radius: 0.7rem;
+--button-height: 2rem;
 --button-hover-background-color: var(--accent-color-1);
 --button-hover-border-color: var(--accent-color-2);
 --button-hover-color: var(--accent-color-2);
+--button-width: 3.5rem;
 --headline-color: #112;
 --text-color: #112;
 --title-color: #112;`
   state.svgInput.value = samples['play-button'].svg
-  state.buttonWidth.value = '3.5rem'
-  state.buttonHeight.value = '2rem'
   state.buttonHTML.value = `<button class="play-button"></button>`
   state.buttonSelector.value = 'play-button'
   state.buttonColorVar.value = '--button-base-color'
@@ -240,9 +222,7 @@ function prepElements() {
     "buttonHoverColorVar",
     "borderColorVar",
     "borderHoverColorVar",
-    "buttonHeight",
     "buttonSelector",
-    "buttonWidth",
     "cssOutput",
     "svgInput",
     "buttonHTML",
