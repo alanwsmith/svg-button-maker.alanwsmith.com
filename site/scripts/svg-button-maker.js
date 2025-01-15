@@ -224,14 +224,13 @@ function getEventListenerCode() {
     })
   let varName = `clicksFor${nameParts.join("")}`
   return `let ${varName} = 0
-console.log("---- event listener update")
 let nodesFor${varName} = document.querySelectorAll(".${state.buttonSelector.value}")
 let elsFor${varName} = [...nodesFor${varName}]
 elsFor${varName}.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
     ${varName} += 1
     console.log("${varName} is now: " + ${varName})
-    const clickCountNodes = document.querySelectorAll(".clickCount")
+    const clickCountNodes = document.querySelectorAll(".click-count")
     const clickCountEls = [...clickCountNodes]
     clickCountEls.forEach((clickCountEl) => {
       clickCountEl.innerHTML = "${varName}: " + ${varName}
