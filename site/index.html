@@ -369,7 +369,7 @@ ul > :where(:not(:first-child)) {
           <legend>Preview</legend>
           <div class="centered">
           <div class="exampleWrapper centered"></div>
-          <div class="clickCount centered">Clicks: 0</div>
+          <div class="click-count centered">-</div>
           </div>
         </fieldset>
       </div>
@@ -418,6 +418,13 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
+          <legend>Aria Label</legend>
+          <div>
+            <label for="ariaLabelValue">Value</label>
+            <input type="text" id="ariaLabelValue" />
+          </div>
+        </fieldset>
+        <fieldset>
           <legend>Primary Color</legend>
           <div>
             <label for="buttonColorVar">Base Variable Name</label>
@@ -450,6 +457,13 @@ ul > :where(:not(:first-child)) {
             <input type="text" id="backgroundHoverColorVar" />
           </div>
         </fieldset>
+        <fieldset class="centerd-fieldset">
+          <legend>Preview</legend>
+          <div class="centered">
+            <div class="exampleWrapper"></div>
+            <div class="click-count">-</div>
+          </div>
+        </fieldset>
       </div>
 
       <h2>Page Customizations</h2>
@@ -463,7 +477,7 @@ ul > :where(:not(:first-child)) {
           <legend>Preview</legend>
           <div class="centered">
             <div class="exampleWrapper"></div>
-            <div class="clickCount">Clicks: 0</div>
+            <div class="click-count">-</div>
           </div>
         </fieldset>
       </div>
@@ -473,9 +487,6 @@ ul > :where(:not(:first-child)) {
       <details>
       <summary>TODO</summary>
       <ul>
-        <li>
-          Add an aria label field
-        </li>
         <li>
           Add a way to adjust padding between the edges of the SVG and
           the inside of the button
@@ -562,6 +573,7 @@ ul > :where(:not(:first-child)) {
         <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
         <li><a href="https://css-tricks.com/probably-dont-base64-svg/">Probably Don’t Base64 SVG - CSS Tricks</a></li>
         <li><a href="https://codepen.io/tigt/post/optimizing-svgs-in-data-uris">Optimizing SVGs in data URIs - Taylor Hunt</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI() - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>

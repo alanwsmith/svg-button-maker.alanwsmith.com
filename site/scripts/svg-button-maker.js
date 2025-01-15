@@ -1,4 +1,6 @@
-let state = {}
+let state = {
+  "previewCount": 0
+}
 
 const samples = {
   "download-button": {
@@ -39,15 +41,20 @@ const samples = {
 function init() {
   state.stylesheet = document.createElement("style")
   document.head.appendChild(state.stylesheet)
+
+  /*
   state.script = document.createElement("script")
   document.head.appendChild(state.script)
+  */
+
   prepElements()
   loadInitialValues()
+  addPreviewListener()
+  addSampleButtonListeners()
   addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
   addCopyButtonTo("#eventListener", "#listenerCopyButtonWrapper")
-  addSampleButtonListeners()
   doUpdate()
 }
 
@@ -78,6 +85,21 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
   buttonParentEl.appendChild(copyButton)
 }
 
+function addPreviewListener() {
+  let nodesForPreviewCount = document.querySelectorAll(".example-button")
+  let elsForPreviewCount = [...nodesForPreviewCount]
+  elsForPreviewCount.forEach((buttonEl) => {
+    buttonEl.addEventListener("click", (event) => {
+      state.previewCount += 1
+      const clickCountNodes = document.querySelectorAll(".click-count")
+      const clickCountEls = [...clickCountNodes]
+      clickCountEls.forEach((clickCountEl) => {
+        clickCountEl.innerHTML = `Clicks: ${state.previewCount}`
+      })
+    })
+  })
+}
+
 function addSampleButtonListeners() {
   const sampleButtonNodes = document.querySelectorAll(".sample-button")
   const sampleButtonEls = [...sampleButtonNodes]
@@ -89,6 +111,10 @@ function addSampleButtonListeners() {
       doUpdate()
     })
   })
+}
+
+function capitalize(text) {
+    return String(text).charAt(0).toUpperCase() + String(text).slice(1);
 }
 
 function convert(input) {
@@ -144,12 +170,38 @@ ${pageVarsString}
 }
 
 function doUpdate() {
+
+  /*
+  const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
+  state.exampleWrappers = [...exampleWrapperNodes]
+  state.exampleWrappers.forEach((exampleWrapper) => {
+    const exampleButton = document.createElement("button")
+    exampleButton.classList.add("example-button")
+    exampleButton.classList.add(state.buttonSelector.value)
+    exampleWrapper.innerHTML = ""
+    exampleWrapper.appendChild(exampleButton)
+  })
+  addSampleButtonListeners()
+
+  let listenerScript = document.createElement("script")
+  listenerScript.type = "module"
+  listenerScript.innerHTML = getEventListenerCode()
+  document.head.appendChild(listenerScript)
+  */
+
+  state.previewCount = 0
+
+  let clickCountNodes = document.querySelectorAll(".click-count")
+  let clickCountEls = [...clickCountNodes]
+  clickCountEls.forEach((clickCountEl) => {
+    clickCountEl.innerHTML = "-"
+  })
+
   let results = convert(state.svgInput.value)
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
   state.stylesheet.textContent = `${results[0]}\n${results[1]}`
   state.eventListener.value = getEventListenerCode()
-  state.script.innerHTML = getEventListenerCode()
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
   const primaryClass = state.buttonSelector.value
@@ -160,29 +212,43 @@ function doUpdate() {
   exampleButtonEls.forEach((exampleButtonEl) => {
     exampleButtonEl.removeAttribute("class")
     exampleButtonEl.classList.add("example-button")
-    exampleButtonEl.classList.add(primaryClass)
+    exampleButtonEl.classList.add(`${primaryClass}${secondaryClasses}`)
   })
-  state.buttonHTML.value = `<button class="${primaryClass}${secondaryClasses}"></button>`
+  state.buttonHTML.value = getButtonHTML()
+}
+
+
+function getButtonHTML() {
+  return `<button aria-label="${state.ariaLabelValue.value}" class="${state.buttonSelector.value}"></button>`
 }
 
 function getEventListenerCode() {
-  return `let clickCount = 0
-let buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
-let buttonEls = [...buttonNodes]
-buttonEls.forEach((buttonEl) => {
+  let nameParts = state
+    .buttonSelector
+    .value
+    .split("-")
+    .map((part) => {
+      return capitalize(part)
+    })
+  let varName = `clicksFor${nameParts.join("")}`
+  return `let ${varName} = 0
+let nodesFor${varName} = document.querySelectorAll(".${state.buttonSelector.value}")
+let elsFor${varName} = [...nodesFor${varName}]
+elsFor${varName}.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
-    clickCount += 1
-    console.log("Button click count is now: " + clickCount)
-    const clickCountNodes = document.querySelectorAll(".clickCount")
+    ${varName} += 1
+    console.log("${varName} is now: " + ${varName})
+    const clickCountNodes = document.querySelectorAll(".click-count")
     const clickCountEls = [...clickCountNodes]
     clickCountEls.forEach((clickCountEl) => {
-      clickCountEl.innerHTML = "Clicks: " + clickCount
+      clickCountEl.innerHTML = "${varName}: " + ${varName}
     })
   })
 })`
 }
 
 function loadInitialValues() {
+  state.ariaLabelValue.value = "Update Click Count"
   state.pageCSS.value = `--accent-color-1: #A8763E;
 --accent-color-2: #F9EAE1;
 --background-color: #F7F3E3;
@@ -199,7 +265,7 @@ function loadInitialValues() {
 --text-color: #112;
 --title-color: #112;`
   state.svgInput.value = samples['play-button'].svg
-  state.buttonHTML.value = `<button class="play-button"></button>`
+  state.buttonHTML.value = getButtonHTML()
   state.buttonSelector.value = 'play-button'
   state.buttonColorVar.value = '--button-base-color'
   state.buttonHoverColorVar.value = '--button-hover-color'
@@ -212,13 +278,14 @@ function loadInitialValues() {
   state.exampleWrappers.forEach((exampleWrapper) => {
     const exampleButton = document.createElement("button")
     exampleButton.classList.add("example-button")
-    exampleButton.classList.add("play-button")
+    exampleButton.classList.add(state.buttonSelector.value)
     exampleWrapper.appendChild(exampleButton)
   })
 }
 
 function prepElements() {
   const els = [
+    "ariaLabelValue",
     "backgroundColorVar",
     "backgroundHoverColorVar",
     "buttonColorVar",
