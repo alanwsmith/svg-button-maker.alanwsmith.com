@@ -1,6 +1,18 @@
 .sample-download-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-download-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -11,7 +23,22 @@
 }
 
 .sample-download-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20stroke-width%3D%222%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M6%2020L18%2020%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M12%204V16M12%2016L15.5%2012.5M12%2016L8.5%2012.5%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-download-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -26,8 +53,20 @@
 }
 
 .sample-elephant-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-elephant-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -38,7 +77,22 @@
 }
 
 .sample-elephant-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3Csvg%20height%3D%22800%22%20width%3D%22800%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M510.909%20157.835c-6.323-38.097-41.228-48.606-54.55-57.191-13.329-8.584.02-26.665-9.502-26.672-9.53-.014-16.184-7.64-18.08-13.35-1.904-5.723-8.571-3.82-12.391%207.606-3.82%2011.425-4.689%2043.324%2029.464%2060.024%2039.028%2019.087%2034.553%2060.032%207.888%2061.28-33.525%201.572-39.352-21.652-51.716-44.524-12.357-22.866-39-35.277-59.963-33.388-7.675.689-19.962%202.655-32.45%204.875-18.342%203.386-43.745%208.385-43.745%208.385-7.612-8.578-20.934-21.921-47.606-16.239-14.694%203.137-37.222%2012.963-48.902%2036.78-2.772%207.592-4.468%2016.576-4.468%2027.313%200%2014.218%202.979%2031.478%2010.399%2052.309%207.309%2020.486%2018.555%2034.697%2031.422%2043.889%2012.874%209.185%2027.464%2013.364%2041.586%2013.364%2012.157%200%2023.941-3.118%2033.836-8.785%209.902-5.668%2017.894-13.826%2022.706-23.961%203.214-6.764%205.034-14.426%205.048-22.983%200-1.034-.034-2.096-.082-3.158l10.542-.531c.062%201.234.09%202.468.09%203.689.014%2010.068-2.172%2019.348-6.054%2027.519-3.889%208.172-9.46%2015.226-16.163%2020.97-13.418%2011.488-31.318%2017.797-49.923%2017.804-16.204%200-32.988-4.82-47.716-15.328-14.735-10.502-27.319-26.672-35.235-48.944-7.737-21.714-11.02-40.159-11.02-55.852%200-7.123.69-13.66%201.938-19.68C85.171%20164.889%2050.914%20219.694%2044.116%20274.41c-10.901%2014.763-29.506%2035.925-40.304%2044.572-12.915%2010.315%208.55%2017.404%2040.876%201.234-.097-.855-.172-1.73.096-.034A16659.558%2016659.558%200%200%200%2066.56%20454.504h84.497s8.578-39.138%2012.674-52.812c12.681-42.248%2052.819-33.27%2056.281%204.2%201.034%2011.143%204.985%2048.612%204.985%2048.612h80.27l32.781-124.8s9.998-31.519%2029.568-44.73c13.39-9.047%2041.897-1.862%2046.668-4.717%204.758-2.854-7.799-15.97-14.266-21.914-8.564-7.916-18.363-23.83.345-20.617%2013.515%202.324%2033.974%203.758%2046.13%202.192%2057.204-6.219%2069.664-50.343%2064.416-82.083z%22%20style%3D%22fill%3A%23000%22%2F%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-elephant-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -53,8 +107,20 @@
 }
 
 .sample-fast-forward-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-fast-forward-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -65,7 +131,22 @@
 }
 
 .sample-fast-forward-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M13%206L19%2012L13%2018%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M5%206L11%2012L5%2018%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-fast-forward-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -80,8 +161,20 @@
 }
 
 .sample-help-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-help-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -92,7 +185,22 @@
 }
 
 .sample-help-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20stroke-width%3D%222%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M12%2022C17.5228%2022%2022%2017.5228%2022%2012C22%206.47715%2017.5228%202%2012%202C6.47715%202%202%206.47715%202%2012C2%2017.5228%206.47715%2022%2012%2022Z%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M9%209C9%205.49997%2014.5%205.5%2014.5%209C14.5%2011.5%2012%2010.9999%2012%2013.9999%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M12%2018.01L12.01%2017.9989%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-help-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -107,8 +215,20 @@
 }
 
 .sample-mute-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-mute-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -119,7 +239,7 @@
 }
 
 .sample-mute-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -132,9 +252,37 @@
   top: 0;
   width: 100%;
 }
+
+.sample-mute-button:hover:after {
+  background: var(--button-hover-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cg%20clip-path%3D%22url(%23clip0_4223_8258)%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M17.4696%209.46973C17.7625%209.1768%2018.2373%209.17675%2018.5303%209.46961L20.0003%2010.9393L21.4696%209.46973C21.7625%209.1768%2022.2373%209.17675%2022.5303%209.46961C22.8232%209.76247%2022.8232%2010.2373%2022.5304%2010.5303L21.061%2012L22.5304%2013.4697C22.8232%2013.7627%2022.8232%2014.2375%2022.5303%2014.5304C22.2373%2014.8233%2021.7625%2014.8232%2021.4696%2014.5303L20.0003%2013.0607L18.5303%2014.5304C18.2373%2014.8233%2017.7625%2014.8232%2017.4696%2014.5303C17.1767%2014.2373%2017.1768%2013.7625%2017.4697%2013.4696L18.9397%2012L17.4697%2010.5304C17.1768%2010.2375%2017.1767%209.76266%2017.4696%209.46973Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M13.0367%203.3964C14.2002%202.62923%2015.75%203.46373%2015.75%204.85741V19.1431C15.75%2020.5368%2014.2002%2021.3713%2013.0367%2020.6041L7.03762%2016.6487C6.99677%2016.6218%206.94892%2016.6074%206.9%2016.6074H4C2.48122%2016.6074%201.25%2015.3762%201.25%2013.8574V10.1431C1.25%208.62434%202.48122%207.39313%204%207.39313H6.9C6.94892%207.39313%206.99677%207.37877%207.03762%207.35184L13.0367%203.3964Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath%20id%3D%22clip0_4223_8258%22%3E%3Crect%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22white%22%3E%3C%2Frect%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .sample-new-window-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-new-window-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -145,7 +293,22 @@
 }
 
 .sample-new-window-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20stroke-width%3D%222%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M8%2021H20.4C20.7314%2021%2021%2020.7314%2021%2020.4V3.6C21%203.26863%2020.7314%203%2020.4%203H3.6C3.26863%203%203%203.26863%203%203.6V16%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M3.5%2020.5L12%2012M12%2012V16M12%2012H8%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-new-window-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -160,8 +323,20 @@
 }
 
 .sample-pause-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-pause-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -172,7 +347,7 @@
 }
 
 .sample-pause-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -186,9 +361,37 @@
   width: 100%;
 }
 
+.sample-pause-button:hover:after {
+  background: var(--button-hover-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6%2018.4V5.6C6%205.26863%206.26863%205%206.6%205H9.4C9.73137%205%2010%205.26863%2010%205.6V18.4C10%2018.7314%209.73137%2019%209.4%2019H6.6C6.26863%2019%206%2018.7314%206%2018.4Z%22%20fill%3D%22%23000000%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M14%2018.4V5.6C14%205.26863%2014.2686%205%2014.6%205H17.4C17.7314%205%2018%205.26863%2018%205.6V18.4C18%2018.7314%2017.7314%2019%2017.4%2019H14.6C14.2686%2019%2014%2018.7314%2014%2018.4Z%22%20fill%3D%22%23000000%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+
 .sample-play-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-play-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -199,7 +402,7 @@
 }
 
 .sample-play-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -213,9 +416,37 @@
   width: 100%;
 }
 
+.sample-play-button:hover:after {
+  background: var(--button-hover-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22M6.90588%204.53682C6.50592%204.2998%206%204.58808%206%205.05299V18.947C6%2019.4119%206.50592%2019.7002%206.90588%2019.4632L18.629%2012.5162C19.0211%2012.2838%2019.0211%2011.7162%2018.629%2011.4838L6.90588%204.53682Z%22%20fill%3D%22%23000000%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+
 .sample-rewind-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-rewind-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -226,7 +457,22 @@
 }
 
 .sample-rewind-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M11%206L5%2012L11%2018%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M19%206L13%2012L19%2018%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.sample-rewind-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
@@ -241,8 +487,20 @@
 }
 
 .sample-sound-high-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 3.5rem;
+  position: relative;
+}
+
+.sample-sound-high-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: 2rem;
@@ -253,7 +511,7 @@
 }
 
 .sample-sound-high-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -267,25 +525,13 @@
   width: 100%;
 }
 
-.sample-wolf-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
-  border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
-  margin: 0;
-  padding: 0;
-  width: 3.5rem;
-  position: relative;
-}
-
-.sample-wolf-button:after {
-  background: var(--button-color);
+.sample-sound-high-button:hover:after {
+  background: var(--button-hover-color);
   content: "";
   height: 100%;
   left: 0;
   margin: 0;
-  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M5.81249%207C5.81249%207%205.35861%207.62759%204.81552%208.66667M18.1875%207C18.1875%207%2018.6414%207.62759%2019.1845%208.66667M4.81552%208.66667C4.0067%2010.2142%203%2012.6743%203%2015.3333C5.8125%2015.3333%207.49999%2017%207.49999%2017C7.49999%2017%208.62499%2022%2012%2022C15.375%2022%2016.5%2017%2016.5%2017C16.5%2017%2018.1875%2015.3333%2021%2015.3333C21%2012.6743%2019.9933%2010.2142%2019.1845%208.66667M4.81552%208.66667C4.81552%208.66667%201.875%206.44436%204.81552%202C5.81249%202.55556%208.625%204.77778%208.625%204.77778C8.625%204.77778%2010.3125%203.66667%2012%203.66667C13.6875%203.66667%2015.375%204.77778%2015.375%204.77778C15.375%204.77778%2018.1875%202.55556%2019.3125%202C22.125%206.44456%2019.1845%208.66667%2019.1845%208.66667%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M11%2018L12%2018M13%2018L12%2018M12%2018L12%2019%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M8.5%2012.5L10%2014%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M15.5%2012.5L14%2014%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
+  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M16.9697%206.96967C17.2626%206.67678%2017.7374%206.67678%2018.0303%206.96967L17.5%207.5C18.0303%206.96967%2018.0306%206.96989%2018.0308%206.97012L18.0313%206.9706L18.0323%206.97168L18.0349%206.97426L18.0416%206.98113L18.0613%207.00165C18.0771%207.01833%2018.0982%207.04101%2018.1237%207.06959C18.1747%207.1267%2018.2439%207.20756%2018.325%207.31121C18.487%207.51816%2018.6983%207.8181%2018.9084%208.20336C19.3286%208.97364%2019.75%2010.0966%2019.75%2011.5C19.75%2012.9034%2019.3286%2014.0264%2018.9084%2014.7966C18.6983%2015.1819%2018.487%2015.4818%2018.325%2015.6888C18.2439%2015.7924%2018.1747%2015.8733%2018.1237%2015.9304C18.0982%2015.959%2018.0771%2015.9817%2018.0613%2015.9984L18.0416%2016.0189L18.0349%2016.0257L18.0323%2016.0283L18.0313%2016.0294L18.0308%2016.0299C18.0306%2016.0301%2018.0303%2016.0303%2017.5207%2015.5207L18.0303%2016.0303C17.7374%2016.3232%2017.2626%2016.3232%2016.9697%2016.0303C16.6776%2015.7383%2016.6768%2015.2654%2016.9671%2014.9723C16.9679%2014.9714%2016.9688%2014.9705%2016.9697%2014.9697L17.5%2015.5C16.9697%2014.9697%2016.9695%2014.9699%2016.9693%2014.9701L16.9689%2014.9705L16.9682%2014.9711L16.9673%2014.9721L16.9724%2014.9667C16.9786%2014.9602%2016.9897%2014.9482%2017.0052%2014.9309C17.0362%2014.8962%2017.0842%2014.8404%2017.1437%2014.7643C17.263%2014.6119%2017.4267%2014.3806%2017.5916%2014.0784C17.9214%2013.4736%2018.25%2012.5966%2018.25%2011.5C18.25%2010.4034%2017.9214%209.52636%2017.5916%208.92164C17.4267%208.6194%2017.263%208.38809%2017.1437%208.23567C17.0842%208.15963%2017.0362%208.10377%2017.0052%208.06908C16.9897%208.05176%2016.9786%208.03978%2016.9724%208.03326L16.9671%208.02774C16.6768%207.73464%2016.6776%207.2617%2016.9697%206.96967Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M19.9697%203.96967C20.2626%203.67678%2020.7374%203.67678%2021.0303%203.96967L20.5%204.5C21.0303%203.96967%2021.0306%203.96991%2021.0308%203.97017L21.0314%203.97072L21.0327%203.972L21.0359%203.97527L21.045%203.98462C21.0523%203.9921%2021.0619%204.00207%2021.0736%204.01451C21.0971%204.03939%2021.1292%204.0742%2021.1688%204.11882C21.2478%204.20802%2021.3566%204.33662%2021.4851%204.50365C21.7419%204.83749%2022.0786%205.32653%2022.4137%205.96319C23.0845%207.23773%2023.75%209.10689%2023.75%2011.5C23.75%2013.8931%2023.0845%2015.7623%2022.4137%2017.0368C22.0786%2017.6735%2021.7419%2018.1625%2021.4851%2018.4963C21.3566%2018.6634%2021.2478%2018.792%2021.1688%2018.8812C21.1292%2018.9258%2021.0971%2018.9606%2021.0736%2018.9855C21.0619%2018.9979%2021.0523%2019.0079%2021.045%2019.0154L21.0359%2019.0247L21.0327%2019.028L21.0314%2019.0293L21.0308%2019.0298C21.0306%2019.0301%2021.0303%2019.0303%2020.5%2018.5L21.0303%2019.0303C20.7374%2019.3232%2020.2626%2019.3232%2019.9697%2019.0303C19.6771%2018.7378%2019.6768%2018.2636%2019.9687%2017.9706C19.9688%2017.9706%2019.9689%2017.9705%2019.969%2017.9704L19.9689%2017.9705L19.9687%2017.9706L19.9683%2017.9711L19.9678%2017.9716C19.9679%2017.9714%2019.9684%2017.9709%2019.9693%2017.97L19.9825%2017.9562C19.9957%2017.9422%2020.0173%2017.9189%2020.0461%2017.8864C20.1038%2017.8213%2020.1903%2017.7194%2020.2962%2017.5818C20.5081%2017.3062%2020.7964%2016.889%2021.0863%2016.3382C21.6655%2015.2377%2022.25%2013.6069%2022.25%2011.5C22.25%209.39311%2021.6655%207.76227%2021.0863%206.66181C20.7964%206.11097%2020.5081%205.69376%2020.2962%205.41822C20.1903%205.28057%2020.1038%205.17869%2020.0461%205.1136C20.0173%205.08107%2019.9957%205.05777%2019.9825%205.04384L19.9693%205.03C19.9683%205.02899%2019.9678%205.02845%2019.9677%205.02839L19.9683%205.02891L19.9689%205.02951L19.9692%205.02989C19.6768%204.73696%2019.6769%204.26242%2019.9697%203.96967ZM19.9677%205.02838C19.9677%205.02838%2019.9677%205.02838%2019.9677%205.02839L19.9677%205.02838Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M12.0367%203.3964C13.2002%202.62923%2014.75%203.46373%2014.75%204.85741V19.1431C14.75%2020.5368%2013.2002%2021.3713%2012.0367%2020.6041L6.03762%2016.6487C5.99677%2016.6218%205.94892%2016.6074%205.9%2016.6074H3C1.48122%2016.6074%200.25%2015.3762%200.25%2013.8574V10.1431C0.25%208.62434%201.48122%207.39313%203%207.39313H5.9C5.94892%207.39313%205.99677%207.37877%206.03762%207.35184L12.0367%203.3964Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: contain;
@@ -293,3 +539,4 @@
   top: 0;
   width: 100%;
 }
+
