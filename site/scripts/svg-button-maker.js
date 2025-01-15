@@ -39,15 +39,18 @@ const samples = {
 function init() {
   state.stylesheet = document.createElement("style")
   document.head.appendChild(state.stylesheet)
+
+  /*
   state.script = document.createElement("script")
   document.head.appendChild(state.script)
+  */
+
   prepElements()
   loadInitialValues()
   addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
   addCopyButtonTo("#eventListener", "#listenerCopyButtonWrapper")
-  addSampleButtonListeners()
   doUpdate()
 }
 
@@ -148,7 +151,23 @@ ${pageVarsString}
 }
 
 function doUpdate() {
-  state.script.innerHTML = getEventListenerCode()
+
+  const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
+  state.exampleWrappers = [...exampleWrapperNodes]
+  state.exampleWrappers.forEach((exampleWrapper) => {
+    const exampleButton = document.createElement("button")
+    exampleButton.classList.add("example-button")
+    exampleButton.classList.add(state.buttonSelector.value)
+    exampleWrapper.innerHTML = ""
+    exampleWrapper.appendChild(exampleButton)
+  })
+  addSampleButtonListeners()
+
+  let listenerScript = document.createElement("script")
+  listenerScript.type = "module"
+  listenerScript.innerHTML = getEventListenerCode()
+  document.head.appendChild(listenerScript)
+
   let results = convert(state.svgInput.value)
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
@@ -227,6 +246,7 @@ function loadInitialValues() {
   state.borderHoverColorVar.value = '--button-hover-border-color'
   state.backgroundColorVar.value = '--button-base-background-color'
   state.backgroundHoverColorVar.value = '--button-hover-background-color'
+/*
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
@@ -235,6 +255,8 @@ function loadInitialValues() {
     exampleButton.classList.add(state.buttonSelector.value)
     exampleWrapper.appendChild(exampleButton)
   })
+  */
+
 }
 
 function prepElements() {
