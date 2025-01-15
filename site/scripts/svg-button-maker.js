@@ -50,6 +50,7 @@ function init() {
   prepElements()
   loadInitialValues()
   addPreviewListener()
+  addSampleButtonListeners()
   addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
