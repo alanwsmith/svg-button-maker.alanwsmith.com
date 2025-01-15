@@ -91,6 +91,10 @@ function addSampleButtonListeners() {
   })
 }
 
+function capitalize(text) {
+    return String(text).charAt(0).toUpperCase() + String(text).slice(1);
+}
+
 function convert(input) {
   // split page vars so they can be shifted over
   // two spaces to match the formatting of the rest
@@ -144,12 +148,12 @@ ${pageVarsString}
 }
 
 function doUpdate() {
+  state.script.innerHTML = getEventListenerCode()
   let results = convert(state.svgInput.value)
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
   state.stylesheet.textContent = `${results[0]}\n${results[1]}`
   state.eventListener.value = getEventListenerCode()
-  state.script.innerHTML = getEventListenerCode()
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
   const primaryClass = state.buttonSelector.value
@@ -160,7 +164,7 @@ function doUpdate() {
   exampleButtonEls.forEach((exampleButtonEl) => {
     exampleButtonEl.removeAttribute("class")
     exampleButtonEl.classList.add("example-button")
-    exampleButtonEl.classList.add(primaryClass)
+    exampleButtonEl.classList.add(`${primaryClass}${secondaryClasses}`)
   })
   state.buttonHTML.value = getButtonHTML()
 }
@@ -171,17 +175,27 @@ function getButtonHTML() {
 }
 
 function getEventListenerCode() {
-  return `let clickCount = 0
-let buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
-let buttonEls = [...buttonNodes]
-buttonEls.forEach((buttonEl) => {
+  let nameParts = state
+    .buttonSelector
+    .value
+    .split("-")
+    .map((part) => {
+      return capitalize(part)
+    })
+  let varName = `clicksFor${nameParts.join("")}`
+  console.log(varName)
+  return `let ${varName} = 0
+console.log("---- event listener update")
+let nodesFor${varName} = document.querySelectorAll(".${state.buttonSelector.value}")
+let elsFor${varName} = [...nodesFor${varName}]
+elsFor${varName}.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
-    clickCount += 1
-    console.log("Button click count is now: " + clickCount)
+    ${varName} += 1
+    console.log("${varName} is now: " + ${varName})
     const clickCountNodes = document.querySelectorAll(".clickCount")
     const clickCountEls = [...clickCountNodes]
     clickCountEls.forEach((clickCountEl) => {
-      clickCountEl.innerHTML = "Clicks: " + clickCount
+      clickCountEl.innerHTML = "${varName}: " + ${varName}
     })
   })
 })`
@@ -218,7 +232,7 @@ function loadInitialValues() {
   state.exampleWrappers.forEach((exampleWrapper) => {
     const exampleButton = document.createElement("button")
     exampleButton.classList.add("example-button")
-    exampleButton.classList.add("play-button")
+    exampleButton.classList.add(state.buttonSelector.value)
     exampleWrapper.appendChild(exampleButton)
   })
 }
