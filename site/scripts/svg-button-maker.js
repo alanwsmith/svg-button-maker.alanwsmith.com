@@ -43,6 +43,7 @@ function init() {
   document.head.appendChild(state.script)
   prepElements()
   loadInitialValues()
+  addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
   addCopyButtonTo("#eventListener", "#listenerCopyButtonWrapper")
@@ -58,7 +59,6 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
   copyButton.dataset.target = codeSelector
   copyButton.addEventListener("click", async (event) => {
     const elToCopy = document.querySelector(event.target.dataset.target)
-    console.log(elToCopy)
       try {
         let content
         if (elToCopy.value) {
