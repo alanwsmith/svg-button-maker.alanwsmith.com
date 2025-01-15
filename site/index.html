@@ -162,6 +162,7 @@ h1 {
   line-height: 1.1;
   margin-top: 1.0em;
   text-wrap: balance;
+  border-bottom: 1px solid var(--title-color);
 }
 
 h2 {
@@ -257,7 +258,7 @@ ul > :where(:not(:first-child)) {
     <header>
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~ 
       <a href="https://tools.alanwsmith.com/">other tools</a> ~
-      <a href="https://links.alanwsmith.com/">other sites</a>
+      <a href="https://links.alanwsmith.com/">other projects</a>
     </header>
 
     <main class="flow"> 
@@ -267,36 +268,23 @@ ul > :where(:not(:first-child)) {
       
       <p>
         This tool converts SVGs into CSS based buttons. It provides
-        everything you need to use them. 
+        everything you need to display and use them in copy/paste 
+        code snippets.
       </p>
 
       <details class="flow">
         <summary class="details-headline">Usage</summary>
         <p>
           Paste the string for your SVG into the <em>SVG Input</em> field to generate
-          the <em>CSS Output</em>. Copy and paste that along with the <em>Button HTML</em>
-          into your site to show the buttons. You can also use the <em>Example Listener</em> to get 
-          started handling clicks.
+          everything you need in the <em>Output</em> section. 
         </p>
         <p>
           You can also click on one of the samples to load them automatically.
         </p>
       </details>
 
-      <h2>Samples</h2>
-      <div class="sampleWrapper">
-        <button class="sample-rewind-button sample-button" data-kind="rewind-button"></button>
-        <button class="sample-play-button sample-button" data-kind="play-button"></button>
-        <button class="sample-pause-button sample-button" data-kind="pause-button"></button>
-        <button class="sample-fast-forward-button sample-button" data-kind="fast-forward-button"><div></div></button>
-        <button class="sample-download-button sample-button" data-kind="download-button"><div></div></button>
-        <button class="sample-help-button sample-button" data-kind="help-button"><div></div></button>
-        <button class="sample-new-window-button sample-button" data-kind="new-window-button"><div></div></button>
-        <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
-        <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
-        <button class="sample-wolf-button sample-button" data-kind="wolf-button"><div></div></button>
-      </div>
 
+      <h2>Input</h2>
       <div class="items">
         <fieldset class="span-2">
           <legend>SVG Input</legend>
@@ -310,6 +298,25 @@ ul > :where(:not(:first-child)) {
           <legend>Listener Output</legend>
           <div class="clickCount centered">Clicks: 0</div>
         </fieldset>
+        <fieldset class="span-2">
+          <legend>Samples</legend>
+          <div class="sampleWrapper">
+            <button class="sample-rewind-button sample-button" data-kind="rewind-button"></button>
+            <button class="sample-play-button sample-button" data-kind="play-button"></button>
+            <button class="sample-pause-button sample-button" data-kind="pause-button"></button>
+            <button class="sample-fast-forward-button sample-button" data-kind="fast-forward-button"><div></div></button>
+            <button class="sample-download-button sample-button" data-kind="download-button"><div></div></button>
+            <button class="sample-help-button sample-button" data-kind="help-button"><div></div></button>
+            <button class="sample-new-window-button sample-button" data-kind="new-window-button"><div></div></button>
+            <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
+            <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
+            <button class="sample-wolf-button sample-button" data-kind="wolf-button"><div></div></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <h2>Output</h2>
+      <div class="items">
         <fieldset>
           <legend>Root CSS Variables</legend>
           <textarea id="rootVariables" rows="7" readonly class="no-wrap"></textarea>
@@ -437,22 +444,28 @@ ul > :where(:not(:first-child)) {
       <h2>TODO</h2>
       <ul>
         <li>
-          Figure out if an example aria label on the buttons makes sense
+          Add an optional aria label field
+        </li>
+        <li>
+          Add a way to adjust padding between the edges of the SVG and
+          the inside of the button
         </li>
         <li>
           Save settings so refreshing the page doesn't reset the options
         </li>
         <li>
-          Include more samples and/or full sets
+          Write up how <code>:after</code> is used to provide the target
+          for the mask-image
         </li>
       </ul>
 
       <h2>Notes</h2>
       <ul>
         <li>
-          The CSS Selector in Button Customizations only works with single classes (i.e.
-          it doesn't work with tag names or ids). I don't plan to address that
-          since I'm always using classes regardless. 
+          The conversion process works best with black and white
+          SVGs. Any solid area in the source is filled in on the resulting output. 
+          Color images can be used, but the color itself is disregarded. The
+          only thing that matters is opacity. 
         </li>
         <li>
           Changing the colors in the Button Customization section affects the 
@@ -466,8 +479,12 @@ ul > :where(:not(:first-child)) {
           the CSS Selector in the Button Customization section the same way it'll
           effect the corresponding sample including size adjustments. 
         </li>
+        <li>
+          There are some possible optimizations that could be done with
+          with the conversion process. I'm not interested in
+          adding the complexity it would require to implement them. 
+        </li>
       </ul>
-
 
       <h2>Issues</h2>
       <ul>
@@ -496,7 +513,8 @@ ul > :where(:not(:first-child)) {
       </div>
       <div>
         <a href="https://github.com/alanwsmith/svg-to-css.alanwsmith.com">source code</a> ~
-        <a href="https://links.alanwsmith.com">other sites</a>
+        <a href="https://tools.alanwsmith.com">other tools</a> ~
+        <a href="https://links.alanwsmith.com">other projects</a>
       </div>
     </footer>
     <script type="module">
