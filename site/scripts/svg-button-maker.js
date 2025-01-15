@@ -118,8 +118,8 @@ ${pageVarsString}
 }
 
 .${state.buttonSelector.value}:hover {
-  background: black;
-  border: 1px solid white;
+  background: var(${state.backgroundHoverColorVar.value});
+  border: 1px solid var(${state.borderHoverColorVar.value});
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: ${state.buttonHeight.value};
@@ -188,23 +188,27 @@ function loadInitialValues() {
   state.pageCSS.value = `--accent-color-1: #A8763E;
 --accent-color-2: #F9EAE1;
 --background-color: #F7F3E3;
---button-background-color: var(--accent-color-2);
---button-border-color: var(--accent-color-1);
+--button-base-background-color: var(--accent-color-2);
+--button-base-border-color: var(--accent-color-1);
+--button-base-color: var(--accent-color-1);
 --button-border-radius: 0.7rem;
---button-color: var(--accent-color-1);
+--button-hover-background-color: var(--accent-color-1);
+--button-hover-border-color: var(--accent-color-2);
 --button-hover-color: var(--accent-color-2);
 --headline-color: #112;
 --text-color: #112;
 --title-color: #112;`
   state.svgInput.value = samples['play-button'].svg
-  state.buttonHTML.value = `<button class="play-button"></button>`
-  state.buttonSelector.value = 'play-button'
   state.buttonWidth.value = '3.5rem'
   state.buttonHeight.value = '2rem'
+  state.buttonHTML.value = `<button class="play-button"></button>`
+  state.buttonSelector.value = 'play-button'
+  state.buttonColorVar.value = '--button-base-color'
   state.buttonHoverColorVar.value = '--button-hover-color'
-  state.borderColorVar.value = '--button-border-color'
-  state.backgroundColorValue.value = 'var(--accent-color-2)'
-  state.backgroundColorVar.value = '--button-background-color'
+  state.borderColorVar.value = '--button-base-border-color'
+  state.borderHoverColorVar.value = '--button-hover-border-color'
+  state.backgroundColorVar.value = '--button-base-background-color'
+  state.backgroundHoverColorVar.value = '--button-hover-background-color'
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
@@ -230,11 +234,12 @@ buttonEls.forEach((buttonEl) => {
 
 function prepElements() {
   const els = [
-    "backgroundColorValue",
     "backgroundColorVar",
+    "backgroundHoverColorVar",
     "buttonColorVar",
     "buttonHoverColorVar",
     "borderColorVar",
+    "borderHoverColorVar",
     "buttonHeight",
     "buttonSelector",
     "buttonWidth",
