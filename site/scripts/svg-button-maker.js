@@ -162,7 +162,12 @@ function doUpdate() {
     exampleButtonEl.classList.add("example-button")
     exampleButtonEl.classList.add(primaryClass)
   })
-  state.buttonHTML.value = `<button class="${primaryClass}${secondaryClasses}"></button>`
+  state.buttonHTML.value = getButtonHTML()
+}
+
+
+function getButtonHTML() {
+  return `<button aria-label="${state.ariaLabelValue.value}" class="${state.buttonSelector.value}"></button>`
 }
 
 function getEventListenerCode() {
@@ -183,6 +188,7 @@ buttonEls.forEach((buttonEl) => {
 }
 
 function loadInitialValues() {
+  state.ariaLabelValue.value = "Update Click Count"
   state.pageCSS.value = `--accent-color-1: #A8763E;
 --accent-color-2: #F9EAE1;
 --background-color: #F7F3E3;
@@ -199,7 +205,7 @@ function loadInitialValues() {
 --text-color: #112;
 --title-color: #112;`
   state.svgInput.value = samples['play-button'].svg
-  state.buttonHTML.value = `<button class="play-button"></button>`
+  state.buttonHTML.value = getButtonHTML()
   state.buttonSelector.value = 'play-button'
   state.buttonColorVar.value = '--button-base-color'
   state.buttonHoverColorVar.value = '--button-hover-color'
@@ -219,6 +225,7 @@ function loadInitialValues() {
 
 function prepElements() {
   const els = [
+    "ariaLabelValue",
     "backgroundColorVar",
     "backgroundHoverColorVar",
     "buttonColorVar",

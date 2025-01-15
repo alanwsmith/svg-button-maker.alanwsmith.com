@@ -418,6 +418,13 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
+          <legend>Aria Label</legend>
+          <div>
+            <label for="ariaLabelValue">Value</label>
+            <input type="text" id="ariaLabelValue" />
+          </div>
+        </fieldset>
+        <fieldset>
           <legend>Primary Color</legend>
           <div>
             <label for="buttonColorVar">Base Variable Name</label>
@@ -450,6 +457,13 @@ ul > :where(:not(:first-child)) {
             <input type="text" id="backgroundHoverColorVar" />
           </div>
         </fieldset>
+        <fieldset class="centerd-fieldset">
+          <legend>Preview</legend>
+          <div class="centered">
+            <div class="exampleWrapper"></div>
+            <div class="clickCount">Clicks: 0</div>
+          </div>
+        </fieldset>
       </div>
 
       <h2>Page Customizations</h2>
@@ -473,9 +487,6 @@ ul > :where(:not(:first-child)) {
       <details>
       <summary>TODO</summary>
       <ul>
-        <li>
-          Add an aria label field
-        </li>
         <li>
           Add a way to adjust padding between the edges of the SVG and
           the inside of the button
