@@ -148,7 +148,8 @@ function doUpdate() {
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
   state.stylesheet.textContent = `${results[0]}\n${results[1]}`
-  state.script.innerHTML = state.eventListener.value
+  state.eventListener.value = getEventListenerCode()
+  state.script.innerHTML = getEventListenerCode()
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
   const primaryClass = state.buttonSelector.value
@@ -162,6 +163,23 @@ function doUpdate() {
     exampleButtonEl.classList.add(primaryClass)
   })
   state.buttonHTML.value = `<button class="${primaryClass}${secondaryClasses}"></button>`
+}
+
+function getEventListenerCode() {
+  return `let clickCount = 0
+let buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
+let buttonEls = [...buttonNodes]
+buttonEls.forEach((buttonEl) => {
+  buttonEl.addEventListener("click", (event) => {
+    clickCount += 1
+    console.log("Button click count is now: " + clickCount)
+    const clickCountNodes = document.querySelectorAll(".clickCount")
+    const clickCountEls = [...clickCountNodes]
+    clickCountEls.forEach((clickCountEl) => {
+      clickCountEl.innerHTML = "Clicks: " + clickCount
+    })
+  })
+})`
 }
 
 function loadInitialValues() {
@@ -197,19 +215,6 @@ function loadInitialValues() {
     exampleButton.classList.add("play-button")
     exampleWrapper.appendChild(exampleButton)
   })
-  state.eventListener.value = `let clickCount = 0
-const buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
-const buttonEls = [...buttonNodes]
-buttonEls.forEach((buttonEl) => {
-  buttonEl.addEventListener("click", (event) => {
-    clickCount += 1
-    const clickCountNodes = document.querySelectorAll(".clickCount")
-    const clickCountEls = [...clickCountNodes]
-    clickCountEls.forEach((clickCountEl) => {
-      clickCountEl.innerHTML = "Clicks: " + clickCount
-    })
-  })
-})`
 }
 
 function prepElements() {
