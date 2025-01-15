@@ -25,6 +25,7 @@
     <script type="module" src="/scripts/svg-to-css-converter.js"></script>
     -->
 
+
     <style>
 :root {
   --accent-color-1: green;
@@ -128,6 +129,10 @@ a:hover, a:focus {
   text-align: right;
 }
 
+.details-headline {
+  font-weight: 900;
+}
+
 fieldset {
   border-radius: var(--large-border-radius);
 }
@@ -157,6 +162,7 @@ h1 {
   line-height: 1.1;
   margin-top: 1.0em;
   text-wrap: balance;
+  border-bottom: 1px solid var(--title-color);
 }
 
 h2 {
@@ -225,10 +231,6 @@ main {
   max-width: var(--large-width);
 }
 
-section {
-  --flow-space: 1.3em;
-}
-
 .no-wrap{
   white-space: pre; 
   overflow-wrap: normal;
@@ -236,18 +238,27 @@ section {
   overscroll-behavior-x: none;
 }
 
+section {
+  --flow-space: 1.3em;
+}
+
+.span-2 {
+  grid-column: 1 / 3;
+}
+
 ul > :where(:not(:first-child)) {
   margin-top: 1em;
 }
 
     </style>
+    <link rel="stylesheet" href="/styles/button-samples.css" />
   </head>
  
   <body>
     <header>
       <a href="https://www.alanwsmith.com/">alanwsmith.com</a> ~ 
       <a href="https://tools.alanwsmith.com/">other tools</a> ~
-      <a href="https://links.alanwsmith.com/">other sites</a>
+      <a href="https://links.alanwsmith.com/">other projects</a>
     </header>
 
     <main class="flow"> 
@@ -256,77 +267,109 @@ ul > :where(:not(:first-child)) {
       </hgroup>
       
       <p>
-        This tool converts SVGs into CSS based buttons. Paste
-        the string for your SVG into the <em>SVG Input</em> field to generate
-        the <em>CSS Output</em> that corresponds with the <em>Button HTML</em>
-        for your site. You can use the <em>Example Listener</em> to get 
-        started handling clicks.
+        This tool converts SVGs into CSS based buttons. It provides
+        everything you need to display and use them in copy/paste 
+        code snippets.
       </p>
 
-      <div id="warning" class="red"></div>
+      <details class="flow">
+        <summary class="details-headline">Usage</summary>
+        <p>
+          Paste the string for your SVG into the <em>SVG Input</em> field to generate
+          everything you need in the <em>Output</em> section. 
+        </p>
+        <p>
+          You can also click on one of the samples to load them automatically.
+        </p>
+      </details>
 
+
+      <h2>Input</h2>
       <div class="items">
-        <fieldset>
+        <fieldset class="span-2">
           <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
-        </fieldset>
-        <fieldset>
-          <legend>CSS Output</legend>
-          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
-          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Button HTML</legend>
-          <textarea id="buttonHTML" rows="3"></textarea>
-          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset class="centered-fieldset">
           <legend>Example Output</legend>
           <div class="exampleWrapper centered"></div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Listener Output</legend>
+          <div class="clickCount centered">Clicks: 0</div>
+        </fieldset>
+        <fieldset class="span-2">
+          <legend>Samples</legend>
+          <div class="sampleWrapper">
+            <button class="sample-rewind-button sample-button" data-kind="rewind-button"></button>
+            <button class="sample-play-button sample-button" data-kind="play-button"></button>
+            <button class="sample-pause-button sample-button" data-kind="pause-button"></button>
+            <button class="sample-fast-forward-button sample-button" data-kind="fast-forward-button"><div></div></button>
+            <button class="sample-download-button sample-button" data-kind="download-button"><div></div></button>
+            <button class="sample-help-button sample-button" data-kind="help-button"><div></div></button>
+            <button class="sample-new-window-button sample-button" data-kind="new-window-button"><div></div></button>
+            <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
+            <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
+            <button class="sample-wolf-button sample-button" data-kind="wolf-button"><div></div></button>
+          </div>
+        </fieldset>
+      </div>
+
+      <h2>Output</h2>
+      <div class="items">
+        <fieldset>
+          <legend>Root CSS Variables</legend>
+          <textarea id="rootVariables" rows="7" readonly class="no-wrap"></textarea>
+          <div id="rootCopyButtonWrapper" class="copyButtonWrapper"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Button CSS</legend>
+          <textarea id="cssOutput" rows="7" readonly class="no-wrap"></textarea>
+          <div id="cssCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset>
           <legend>Example Listener</legend>
           <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
           <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Listener Output</legend>
-          <div class="clickCount centered">Clicks: 0</div>
+        <fieldset>
+          <legend>Button HTML</legend>
+          <textarea id="buttonHTML" rows="3" readonly></textarea>
+          <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
       </div>
 
       <details class="flow">
         <summary>Details</summary>
-      <p>
-        The CSS uses <code>mask-image</code> and associated properties. 
-        It allows buttons to use CSS variables (as compared to 
-        <code>background-image</code> which requires changes 
-        the source SVG directly to do things like change colors).
-      </p>
-
-      <p>
-        I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-        They are free, open-source, and use the 
-        <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
-        (Note: some of their SVGs have an issue that prevents them
-          from working properly with <code>mask-image</code>. 
-          See <em>Issues</em> below for how to fix that.)
-      </p>
-
+        <p>
+          The CSS uses <code>mask-image</code> and associated properties. 
+          It allows buttons to use CSS variables (as compared to 
+          <code>background-image</code> which requires changes 
+          the source SVG directly to do things like change colors).
+        </p>
+        <p>
+          I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
+          They are free, open-source, and use the 
+          <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
+          (Note: some of their SVGs have an issue that prevents them
+            from working properly with <code>mask-image</code>. 
+            See <em>Issues</em> below for how to fix that.)
+        </p>
       </details>
+
 
       <h2>Button Customization</h2>
 
       <div class="items">
         <fieldset>
-          <legend>CSS Selector</legend>
+          <legend>CSS Classes</legend>
           <div>
-            <label for="buttonSelector">Primary</label>
+            <label for="buttonSelector">Primary (for selector)</label>
             <input type="text" id="buttonSelector" />
           </div>
           <div>
-            <label for="childSelector">Secondary</label>
-            <input type="text" id="childSelector" />
+            <label for="secondaryClasses">Secondaries (optional)</label>
+            <input type="text" id="secondaryClasses" />
           </div>
         </fieldset>
         <fieldset>
@@ -401,16 +444,45 @@ ul > :where(:not(:first-child)) {
       <h2>TODO</h2>
       <ul>
         <li>
-          Figure out if an example aria label on the buttons makes sense
+          Add an optional aria label field
         </li>
         <li>
-          Save setting so refreshing the page doesn't reset the options
+          Add a way to adjust padding between the edges of the SVG and
+          the inside of the button
         </li>
         <li>
-          Include icon samples or sets directly
+          Save settings so refreshing the page doesn't reset the options
         </li>
         <li>
-          Maybe add color input selectors
+          Write up how <code>:after</code> is used to provide the target
+          for the mask-image
+        </li>
+      </ul>
+
+      <h2>Notes</h2>
+      <ul>
+        <li>
+          The conversion process works best with black and white
+          SVGs. Any solid area in the source is filled in on the resulting output. 
+          Color images can be used, but the color itself is disregarded. The
+          only thing that matters is opacity. 
+        </li>
+        <li>
+          Changing the colors in the Button Customization section affects the 
+          sample buttons. Change the size does not. This is by design as the
+          samples are using the pages CSS variables for colors while sizing
+          it up to the individual buttons needs. 
+        </li>
+        <li>
+          The Sample buttons prepend their button names with <code>sample-</code>
+          to avoid using the styles produced by the tool directly. If you prepend
+          the CSS Selector in the Button Customization section the same way it'll
+          effect the corresponding sample including size adjustments. 
+        </li>
+        <li>
+          There are some possible optimizations that could be done with
+          with the conversion process. I'm not interested in
+          adding the complexity it would require to implement them. 
         </li>
       </ul>
 
@@ -441,11 +513,12 @@ ul > :where(:not(:first-child)) {
       </div>
       <div>
         <a href="https://github.com/alanwsmith/svg-to-css.alanwsmith.com">source code</a> ~
-        <a href="https://links.alanwsmith.com">other sites</a>
+        <a href="https://tools.alanwsmith.com">other tools</a> ~
+        <a href="https://links.alanwsmith.com">other projects</a>
       </div>
     </footer>
     <script type="module">
-      import { init } from "/scripts/svg-to-css-converter.js"
+      import { init } from "/scripts/svg-button-maker.js"
       init()
     </script>
 
