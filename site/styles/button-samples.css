@@ -1,17 +1,20 @@
 .sample-download-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-download-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-download-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -25,20 +28,27 @@
   width: 100%;
 }
 
+.sample-download-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-elephant-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-elephant-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-elephant-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -52,20 +62,27 @@
   width: 100%;
 }
 
+.sample-elephant-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-fast-forward-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-fast-forward-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-fast-forward-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -79,20 +96,27 @@
   width: 100%;
 }
 
+.sample-fast-forward-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-help-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-help-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-help-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -106,20 +130,27 @@
   width: 100%;
 }
 
+.sample-help-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-mute-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-mute-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-mute-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -132,20 +163,28 @@
   top: 0;
   width: 100%;
 }
+
+.sample-mute-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-new-window-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-new-window-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-new-window-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -159,20 +198,27 @@
   width: 100%;
 }
 
+.sample-new-window-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-pause-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-pause-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-pause-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -186,20 +232,27 @@
   width: 100%;
 }
 
+.sample-pause-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-play-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-play-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-play-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -213,20 +266,27 @@
   width: 100%;
 }
 
+.sample-play-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-rewind-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-rewind-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-rewind-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -240,20 +300,27 @@
   width: 100%;
 }
 
+.sample-rewind-button:hover:after {
+  background: var(--button-hover-color);
+}
+
 .sample-sound-high-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
+  background: var(--button-base-background-color);
+  border: 1px solid var(--button-base-border-color);
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: 3.5rem;
+  width: var(--button-width);
   position: relative;
 }
 
+.sample-sound-high-button:hover {
+  background: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
 .sample-sound-high-button:after {
-  background: var(--button-color);
+  background: var(--button-base-color);
   content: "";
   height: 100%;
   left: 0;
@@ -267,29 +334,7 @@
   width: 100%;
 }
 
-.sample-wolf-button {
-  background: var(--button-background-color);
-  border: 1px solid var(--button-border-color);
-  border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: 2rem;
-  margin: 0;
-  padding: 0;
-  width: 3.5rem;
-  position: relative;
+.sample-sound-high-button:hover:after {
+  background: var(--button-hover-color);
 }
 
-.sample-wolf-button:after {
-  background: var(--button-color);
-  content: "";
-  height: 100%;
-  left: 0;
-  margin: 0;
-  mask-image: url("data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%3Csvg%20width%3D%2240px%22%20height%3D%2240px%22%20viewBox%3D%220%200%2024%2024%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20color%3D%22%23000000%22%3E%3Cpath%20d%3D%22M5.81249%207C5.81249%207%205.35861%207.62759%204.81552%208.66667M18.1875%207C18.1875%207%2018.6414%207.62759%2019.1845%208.66667M4.81552%208.66667C4.0067%2010.2142%203%2012.6743%203%2015.3333C5.8125%2015.3333%207.49999%2017%207.49999%2017C7.49999%2017%208.62499%2022%2012%2022C15.375%2022%2016.5%2017%2016.5%2017C16.5%2017%2018.1875%2015.3333%2021%2015.3333C21%2012.6743%2019.9933%2010.2142%2019.1845%208.66667M4.81552%208.66667C4.81552%208.66667%201.875%206.44436%204.81552%202C5.81249%202.55556%208.625%204.77778%208.625%204.77778C8.625%204.77778%2010.3125%203.66667%2012%203.66667C13.6875%203.66667%2015.375%204.77778%2015.375%204.77778C15.375%204.77778%2018.1875%202.55556%2019.3125%202C22.125%206.44456%2019.1845%208.66667%2019.1845%208.66667%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M11%2018L12%2018M13%2018L12%2018M12%2018L12%2019%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M8.5%2012.5L10%2014%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3Cpath%20d%3D%22M15.5%2012.5L14%2014%22%20stroke%3D%22%23000000%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E");
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}

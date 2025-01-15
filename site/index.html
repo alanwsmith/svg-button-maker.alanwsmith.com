@@ -25,7 +25,6 @@
     <script type="module" src="/scripts/svg-to-css-converter.js"></script>
     -->
 
-
     <style>
 :root {
   --accent-color-1: green;
@@ -129,8 +128,8 @@ a:hover, a:focus {
   text-align: right;
 }
 
-.details-headline {
-  font-weight: 900;
+em {
+  font-weight: 600;
 }
 
 fieldset {
@@ -228,6 +227,10 @@ legend {
   font-weight: 900;
 }
 
+li > :where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
 main {
   align-items: center;
   margin-inline: auto;
@@ -242,6 +245,10 @@ main {
   overscroll-behavior-x: none;
 }
 
+ol > :where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
 .right {
   text-align: right;
 }
@@ -252,6 +259,11 @@ section {
 
 .span-2 {
   grid-column: 1 / 3;
+}
+
+summary {
+  font-size: var(--xlarge-font-size);
+  font-weight: 900;
 }
 
 ul > :where(:not(:first-child)) {
@@ -275,22 +287,62 @@ ul > :where(:not(:first-child)) {
       </hgroup>
       
       <p>
-        This tool converts SVGs into HTML/CSS based buttons. It provides
+        This tool converts SVGs into HTML/CSS buttons. It provides
         everything you need to display and use them in copy/paste 
         code snippets.
       </p>
 
       <details class="flow">
-        <summary class="details-headline">Usage</summary>
+        <summary>Usage</summary>
+        <p>The process for creating a button is:</p>
+        <ol>
+          <li>
+            <p>
+              Open your SVG file in a text editor (e.g. the free 
+              <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>) then
+              copy and paste the text into the <em>Input -&gt; SVG Input</em>
+              field
+            </p>
+            <p>
+              You can also click one of the <em>Input -&gt; Samples</em> to get started
+            </p>
+          </li>
+          <li>
+            The <em>Input -&gt; Preview</em> shows how the button will look and function.
+            When you click on it, its <em>Clicks</em> counter will update. 
+          </li>
+          <li>
+            Customize your button's colors, classes, and sizes in the <em>Button Customization</em> and 
+            <em>Page Customization</em> sections
+          <li>
+            <p>
+              Copy the <em>Output -&gt; Root CSS Variables</em> and <em>Output -&gt; Button CSS</em>
+              fields to your site's CSS.
+            </p>
+            <p>
+              You only need on copy of the <em>Output -&gt; Root CSS Variables</em>
+              in your CSS even if you use multiple <em>Output -&gt; Button CSS</em> snippets
+              to create different buttons</p>
+          </li>
+          <li>
+            Copy the <em>Output -&gt; Example Listener</em> code to your
+            site's JavaScript (and update it to provide whatever functionality 
+            you need for the button)
+          </li>
+          <li>
+            Copy the <em>Output -&gt; Button HTML</em> to wherever you
+            want a button to appear on your site
+          </li>
+        </ol>
         <p>
-          Paste the string for your SVG into the <em>SVG Input</em> field to generate
-          everything you need in the <em>Output</em> section. 
-        </p>
-        <p>
-          You can also click on one of the samples to load them automatically.
+          Consider 
+          <a href="https://github.com/alanwsmith/svg-button-maker.alanwsmith.com">staring the project on GitHub</a> 
+          if you find it useful:<br />
+          <gh-stars repo="alanwsmith/svg-button-maker.alanwsmith.com"></gh-stars>
         </p>
       </details>
 
+      <hr />
 
       <h2>Input</h2>
       <div class="items">
@@ -298,15 +350,7 @@ ul > :where(:not(:first-child)) {
           <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
         </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Example Output</legend>
-          <div class="exampleWrapper centered"></div>
-        </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Listener Output</legend>
-          <div class="clickCount centered">Clicks: 0</div>
-        </fieldset>
-        <fieldset class="span-2">
+        <fieldset>
           <legend>Samples</legend>
           <div class="sampleWrapper">
             <button class="sample-rewind-button sample-button" data-kind="rewind-button"></button>
@@ -319,6 +363,13 @@ ul > :where(:not(:first-child)) {
             <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
             <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
             <button class="sample-elephant-button sample-button" data-kind="elephant-button"><div></div></button>
+          </div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Preview</legend>
+          <div class="centered">
+          <div class="exampleWrapper centered"></div>
+          <div class="clickCount centered">Clicks: 0</div>
           </div>
         </fieldset>
       </div>
@@ -337,7 +388,7 @@ ul > :where(:not(:first-child)) {
         </fieldset>
         <fieldset>
           <legend>Example Listener</legend>
-          <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
+          <textarea id="eventListener" rows="7" readonly class="no-wrap"></textarea>
           <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset>
@@ -351,25 +402,6 @@ ul > :where(:not(:first-child)) {
           data-background="var(--accent-color-2)"
         ></gh-stars></div>
       </div>
-
-      <details class="flow">
-        <summary>Details</summary>
-        <p>
-          The CSS uses <code>mask-image</code> and associated properties. 
-          It allows buttons to use CSS variables (as compared to 
-          <code>background-image</code> which requires changes 
-          the source SVG directly to do things like change colors).
-        </p>
-        <p>
-          I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-          They are free, open-source, and use the 
-          <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
-          (Note: some of their SVGs have an issue that prevents them
-            from working properly with <code>mask-image</code>. 
-            See <em>Issues</em> below for how to fix that.)
-        </p>
-      </details>
-
 
       <h2>Button Customization</h2>
 
@@ -386,54 +418,36 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset>
-          <legend>Size</legend>
-          <div>
-            <label for="buttonWidth">Width</label>
-            <input type="text" id="buttonWidth" />
-          </div>
-          <div>
-            <label for="buttonHeight">Height</label>
-            <input type="text" id="buttonHeight" />
-          </div>
-        </fieldset>
-        <fieldset>
           <legend>Primary Color</legend>
           <div>
-            <label for="buttonColorVar">Variable Name</label>
+            <label for="buttonColorVar">Base Variable Name</label>
             <input type="text" id="buttonColorVar" />
           </div>
           <div>
-            <label for="buttonColorValue">Value</label>
-            <input type="text" id="buttonColorValue" />
-          </div>
-        </fieldset>
-        <fieldset class="centerd-fieldset">
-          <legend>Example Output</legend>
-          <div class="centered">
-            <div class="exampleWrapper"></div>
-            <div class="clickCount">Clicks: 0</div>
+            <label for="buttonHoverColorVar">Hover Variable Name</label>
+            <input type="text" id="buttonHoverColorVar" />
           </div>
         </fieldset>
         <fieldset>
           <legend>Border Color</legend>
           <div>
-            <label for="borderColorVar">Variable Name</label>
+            <label for="borderColorVar">Base Variable Name</label>
             <input type="text" id="borderColorVar" />
           </div>
           <div>
-            <label for="borderColorValue">Value</label>
-            <input type="text" id="borderColorValue" />
+            <label for="borderHoverColorVar">Hover Variable Name</label>
+            <input type="text" id="borderHoverColorVar" />
           </div>
         </fieldset>
         <fieldset>
           <legend>Background Color</legend>
           <div>
-            <label for="backgroundColorVar">Variable Name</label>
+            <label for="backgroundColorVar">Base Variable Name</label>
             <input type="text" id="backgroundColorVar" />
           </div>
           <div>
-            <label for="backgroundColorValue">Value</label>
-            <input type="text" id="backgroundColorValue" />
+            <label for="backgroundHoverColorVar">Hover Variable Name</label>
+            <input type="text" id="backgroundHoverColorVar" />
           </div>
         </fieldset>
       </div>
@@ -443,10 +457,10 @@ ul > :where(:not(:first-child)) {
       <div class="items">
         <div>
           <label for="pageCSS">Page CSS</label>
-          <textarea id="pageCSS" rows="7"></textarea>
+          <textarea id="pageCSS" rows="15" class="no-wrap"></textarea>
         </div>
         <fieldset class="centerd-fieldset">
-          <legend>Example Output</legend>
+          <legend>Preview</legend>
           <div class="centered">
             <div class="exampleWrapper"></div>
             <div class="clickCount">Clicks: 0</div>
@@ -454,13 +468,13 @@ ul > :where(:not(:first-child)) {
         </fieldset>
       </div>
 
-      <h2>TODO</h2>
+      <hr />
+
+      <details>
+      <summary>TODO</summary>
       <ul>
         <li>
-          Add button border radius
-        </li>
-        <li>
-          Add an optional aria label field
+          Add an aria label field
         </li>
         <li>
           Add a way to adjust padding between the edges of the SVG and
@@ -474,9 +488,37 @@ ul > :where(:not(:first-child)) {
           for the mask-image
         </li>
       </ul>
+      </details>
 
-      <h2>Notes</h2>
+      <details>
+      <summary>Notes</summary>
       <ul>
+        <li>
+          I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
+          They are free, open-source, and use the 
+          <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
+          (Note: some of their SVGs have an issue that prevents them
+            from working properly with <code>mask-image</code>. 
+            See <em>Issues</em> below for how to fix that.)
+        </li>
+          <li>
+            The <em>Button Customization</em> section offers the ability to 
+            change the size, colors, and classes for the button. The colors
+            can be any valid CSS color property value including variables 
+            (which is how they are set up by default). 
+          </li>
+          <li>
+            The <em>Page Customization</em> section lets you change the 
+            variables live on the site so you can see the results. These
+            variables are output in the <em>Output -> Root CSS Variables</em>
+            section so you can copy/paste them into your site.
+          </li>
+        <li>
+          The CSS uses <code>mask-image</code> and associated properties. 
+          It allows buttons to use CSS variables (as compared to 
+          <code>background-image</code> which requires changes 
+          the source SVG directly to do things like change colors).
+        </li>
         <li>
           The conversion process works best with black and white
           SVGs. Any solid area in the source is filled in on the resulting output. 
@@ -501,8 +543,10 @@ ul > :where(:not(:first-child)) {
           adding the complexity it would require to implement them. 
         </li>
       </ul>
+      </details>
 
-      <h2>Issues</h2>
+      <details>
+      <summary>Issues</summary>
       <ul>
         <li>
           Some icons from <a href="https://iconoir.com/">Iconoir</a> have SVG elements with 
@@ -510,8 +554,10 @@ ul > :where(:not(:first-child)) {
           browsers. Manually removing the extra <code>stroke-width</code> fixes them.
         </li>
       </ul>
+      </details>
 
-      <h2>References</h2>
+      <details>
+      <summary>References</summary>
       <ul>
         <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
         <li><a href="https://css-tricks.com/probably-dont-base64-svg/">Probably Don’t Base64 SVG - CSS Tricks</a></li>
@@ -520,6 +566,7 @@ ul > :where(:not(:first-child)) {
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
       </ul>
+      </details>
 
     </main>
 

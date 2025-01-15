@@ -43,6 +43,7 @@ function init() {
   document.head.appendChild(state.script)
   prepElements()
   loadInitialValues()
+  addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
   addCopyButtonTo("#eventListener", "#listenerCopyButtonWrapper")
@@ -58,7 +59,6 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
   copyButton.dataset.target = codeSelector
   copyButton.addEventListener("click", async (event) => {
     const elToCopy = document.querySelector(event.target.dataset.target)
-    console.log(elToCopy)
       try {
         let content
         if (elToCopy.value) {
@@ -102,9 +102,6 @@ function convert(input) {
   let converted = encodeURIComponent(input)
   let rootVariables = `:root {
 ${pageVarsString}
-  ${state.backgroundColorVar.value}: ${state.backgroundColorValue.value};
-  ${state.borderColorVar.value}: ${state.borderColorValue.value};
-  ${state.buttonColorVar.value}: ${state.buttonColorValue.value};
 }
 `
 
@@ -112,12 +109,15 @@ ${pageVarsString}
   background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
-  cursor: pointer;
-  height: ${state.buttonHeight.value};
+  height: var(--button-height);
   margin: 0;
-  padding: 0;
-  width: ${state.buttonWidth.value};
+  width: var(--button-width);
   position: relative;
+}
+
+.${state.buttonSelector.value}:hover {
+  background: var(${state.backgroundHoverColorVar.value});
+  border: 1px solid var(${state.borderHoverColorVar.value});
 }
 
 .${state.buttonSelector.value}:after {
@@ -134,6 +134,11 @@ ${pageVarsString}
   top: 0;
   width: 100%;
 }
+
+.${state.buttonSelector.value}:hover:after {
+  background: var(${state.buttonHoverColorVar.value});
+}
+
 `
   return [rootVariables, buttonCSS]
 }
@@ -143,7 +148,8 @@ function doUpdate() {
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
   state.stylesheet.textContent = `${results[0]}\n${results[1]}`
-  state.script.innerHTML = state.eventListener.value
+  state.eventListener.value = getEventListenerCode()
+  state.script.innerHTML = getEventListenerCode()
   const exampleButtonNodes = document.querySelectorAll(".example-button")
   const exampleButtonEls = [...exampleButtonNodes]
   const primaryClass = state.buttonSelector.value
@@ -159,39 +165,14 @@ function doUpdate() {
   state.buttonHTML.value = `<button class="${primaryClass}${secondaryClasses}"></button>`
 }
 
-function loadInitialValues() {
-  state.pageCSS.value = `--accent-color-1: #A8763E;
---accent-color-2: #F9EAE1;
---background-color: #F7F3E3;
---button-border-radius: 0.7rem;
---headline-color: #112;
---text-color: #112;
---title-color: #112;`
-  state.svgInput.value = samples['play-button'].svg
-  state.buttonHTML.value = `<button class="play-button"></button>`
-  state.buttonSelector.value = 'play-button'
-  state.buttonWidth.value = '3.5rem'
-  state.buttonHeight.value = '2rem'
-  state.buttonColorValue.value = 'var(--accent-color-1)'
-  state.buttonColorVar.value = '--button-color'
-  state.borderColorValue.value = 'var(--accent-color-1)'
-  state.borderColorVar.value = '--button-border-color'
-  state.backgroundColorValue.value = 'var(--accent-color-2)'
-  state.backgroundColorVar.value = '--button-background-color'
-  const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
-  state.exampleWrappers = [...exampleWrapperNodes]
-  state.exampleWrappers.forEach((exampleWrapper) => {
-    const exampleButton = document.createElement("button")
-    exampleButton.classList.add("example-button")
-    exampleButton.classList.add("play-button")
-    exampleWrapper.appendChild(exampleButton)
-  })
-  state.eventListener.value = `let clickCount = 0
-const buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
-const buttonEls = [...buttonNodes]
+function getEventListenerCode() {
+  return `let clickCount = 0
+let buttonNodes = document.querySelectorAll(".${state.buttonSelector.value}")
+let buttonEls = [...buttonNodes]
 buttonEls.forEach((buttonEl) => {
   buttonEl.addEventListener("click", (event) => {
     clickCount += 1
+    console.log("Button click count is now: " + clickCount)
     const clickCountNodes = document.querySelectorAll(".clickCount")
     const clickCountEls = [...clickCountNodes]
     clickCountEls.forEach((clickCountEl) => {
@@ -201,17 +182,50 @@ buttonEls.forEach((buttonEl) => {
 })`
 }
 
+function loadInitialValues() {
+  state.pageCSS.value = `--accent-color-1: #A8763E;
+--accent-color-2: #F9EAE1;
+--background-color: #F7F3E3;
+--button-base-background-color: var(--accent-color-2);
+--button-base-border-color: var(--accent-color-1);
+--button-base-color: var(--accent-color-1);
+--button-border-radius: 0.7rem;
+--button-height: 2rem;
+--button-hover-background-color: var(--accent-color-1);
+--button-hover-border-color: var(--accent-color-2);
+--button-hover-color: var(--accent-color-2);
+--button-width: 3.5rem;
+--headline-color: #112;
+--text-color: #112;
+--title-color: #112;`
+  state.svgInput.value = samples['play-button'].svg
+  state.buttonHTML.value = `<button class="play-button"></button>`
+  state.buttonSelector.value = 'play-button'
+  state.buttonColorVar.value = '--button-base-color'
+  state.buttonHoverColorVar.value = '--button-hover-color'
+  state.borderColorVar.value = '--button-base-border-color'
+  state.borderHoverColorVar.value = '--button-hover-border-color'
+  state.backgroundColorVar.value = '--button-base-background-color'
+  state.backgroundHoverColorVar.value = '--button-hover-background-color'
+  const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
+  state.exampleWrappers = [...exampleWrapperNodes]
+  state.exampleWrappers.forEach((exampleWrapper) => {
+    const exampleButton = document.createElement("button")
+    exampleButton.classList.add("example-button")
+    exampleButton.classList.add("play-button")
+    exampleWrapper.appendChild(exampleButton)
+  })
+}
+
 function prepElements() {
   const els = [
-    "backgroundColorValue",
     "backgroundColorVar",
-    "buttonColorValue",
+    "backgroundHoverColorVar",
     "buttonColorVar",
-    "borderColorValue",
+    "buttonHoverColorVar",
     "borderColorVar",
-    "buttonHeight",
+    "borderHoverColorVar",
     "buttonSelector",
-    "buttonWidth",
     "cssOutput",
     "svgInput",
     "buttonHTML",
