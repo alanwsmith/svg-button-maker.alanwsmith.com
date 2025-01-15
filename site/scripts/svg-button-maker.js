@@ -1,4 +1,6 @@
-let state = {}
+let state = {
+  "previewCount": 0
+}
 
 const samples = {
   "download-button": {
@@ -47,6 +49,7 @@ function init() {
 
   prepElements()
   loadInitialValues()
+  addPreviewListener()
   addCopyButtonTo("#rootVariables", "#rootCopyButtonWrapper")
   addCopyButtonTo("#cssOutput", "#cssCopyButtonWrapper")
   addCopyButtonTo("#buttonHTML", "#htmlCopyButtonWrapper")
@@ -79,6 +82,21 @@ function addCopyButtonTo(codeSelector, buttonParentSelector) {
       }, 2000, event.target)
   })
   buttonParentEl.appendChild(copyButton)
+}
+
+function addPreviewListener() {
+  let nodesForPreviewCount = document.querySelectorAll(".example-button")
+  let elsForPreviewCount = [...nodesForPreviewCount]
+  elsForPreviewCount.forEach((buttonEl) => {
+    buttonEl.addEventListener("click", (event) => {
+      state.previewCount += 1
+      const clickCountNodes = document.querySelectorAll(".click-count")
+      const clickCountEls = [...clickCountNodes]
+      clickCountEls.forEach((clickCountEl) => {
+        clickCountEl.innerHTML = `Clicks: ${state.previewCount}`
+      })
+    })
+  })
 }
 
 function addSampleButtonListeners() {
@@ -152,6 +170,7 @@ ${pageVarsString}
 
 function doUpdate() {
 
+  /*
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
@@ -167,6 +186,7 @@ function doUpdate() {
   listenerScript.type = "module"
   listenerScript.innerHTML = getEventListenerCode()
   document.head.appendChild(listenerScript)
+  */
 
   let results = convert(state.svgInput.value)
   state.rootVariables.value = results[0]
@@ -202,7 +222,6 @@ function getEventListenerCode() {
       return capitalize(part)
     })
   let varName = `clicksFor${nameParts.join("")}`
-  console.log(varName)
   return `let ${varName} = 0
 console.log("---- event listener update")
 let nodesFor${varName} = document.querySelectorAll(".${state.buttonSelector.value}")
@@ -246,7 +265,6 @@ function loadInitialValues() {
   state.borderHoverColorVar.value = '--button-hover-border-color'
   state.backgroundColorVar.value = '--button-base-background-color'
   state.backgroundHoverColorVar.value = '--button-hover-background-color'
-/*
   const exampleWrapperNodes = document.querySelectorAll(".exampleWrapper")
   state.exampleWrappers = [...exampleWrapperNodes]
   state.exampleWrappers.forEach((exampleWrapper) => {
@@ -255,8 +273,6 @@ function loadInitialValues() {
     exampleButton.classList.add(state.buttonSelector.value)
     exampleWrapper.appendChild(exampleButton)
   })
-  */
-
 }
 
 function prepElements() {
