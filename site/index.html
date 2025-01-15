@@ -25,7 +25,6 @@
     <script type="module" src="/scripts/svg-to-css-converter.js"></script>
     -->
 
-
     <style>
 :root {
   --accent-color-1: green;
@@ -129,8 +128,8 @@ a:hover, a:focus {
   text-align: right;
 }
 
-.details-headline {
-  font-weight: 900;
+em {
+  font-weight: 600;
 }
 
 fieldset {
@@ -242,6 +241,10 @@ main {
   overscroll-behavior-x: none;
 }
 
+ol > :where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
 .right {
   text-align: right;
 }
@@ -252,6 +255,11 @@ section {
 
 .span-2 {
   grid-column: 1 / 3;
+}
+
+summary {
+  font-size: var(--xlarge-font-size);
+  font-weight: 900;
 }
 
 ul > :where(:not(:first-child)) {
@@ -281,13 +289,40 @@ ul > :where(:not(:first-child)) {
       </p>
 
       <details class="flow">
-        <summary class="details-headline">Usage</summary>
+        <summary>Usage</summary>
+        <p>The process for creating a button is:</p>
+        <ol>
+          <li>
+            Open your SVG file in a text editor (like the free 
+            <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>) then
+            copy and paste the text into the <em>Input -&gt; SVG Input</em>
+            field (or, click one of the <em>Input -&gt; Samples</em> to get started)
+          </li>
+          <li>
+            The <em>Input -&gt; Preview</em> shows what the button will look like. 
+            Clicking on it will update the <em>Input -&gt; Listener Preview</em> counter.
+          <li>
+            Customize your button's colors, classes, and sizes in the <em>Button Customization</em> and 
+            <em>Page Customization</em> sections
+          <li>
+            Copy <em>Output -&gt; Root CSS Variables</em> and <em>Output -&gt; Button CSS</em>
+            to your site's CSS.
+          </li>
+          <li>
+            Copy the <em>Output -&gt; Example Listener</em> code to your
+            site's JavaScript (and update it to provide whatever functionality 
+            you need for the button)
+          </li>
+          <li>
+            Copy the <em>Output -&gt; Button HTML</em> to wherever you
+            want a button to appear on your site
+          </li>
+        </ol>
         <p>
-          Paste the string for your SVG into the <em>SVG Input</em> field to generate
-          everything you need in the <em>Output</em> section. 
-        </p>
-        <p>
-          You can also click on one of the samples to load them automatically.
+          Consider 
+          <a href="https://github.com/alanwsmith/svg-button-maker.alanwsmith.com">staring the project on GitHub</a> 
+          if you find it useful:<br />
+          <gh-stars repo="alanwsmith/svg-button-maker.alanwsmith.com"></gh-stars>
         </p>
       </details>
 
@@ -299,11 +334,11 @@ ul > :where(:not(:first-child)) {
           <textarea id="svgInput" rows="7"></textarea>
         </fieldset>
         <fieldset class="centered-fieldset">
-          <legend>Example Output</legend>
+          <legend>Preview</legend>
           <div class="exampleWrapper centered"></div>
         </fieldset>
         <fieldset class="centered-fieldset">
-          <legend>Listener Output</legend>
+          <legend>Listener Preview</legend>
           <div class="clickCount centered">Clicks: 0</div>
         </fieldset>
         <fieldset class="span-2">
@@ -337,7 +372,7 @@ ul > :where(:not(:first-child)) {
         </fieldset>
         <fieldset>
           <legend>Example Listener</legend>
-          <textarea id="eventListener" rows="7" class="no-wrap"></textarea>
+          <textarea id="eventListener" rows="7" readonly class="no-wrap"></textarea>
           <div id="listenerCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
         <fieldset>
@@ -351,25 +386,6 @@ ul > :where(:not(:first-child)) {
           data-background="var(--accent-color-2)"
         ></gh-stars></div>
       </div>
-
-      <details class="flow">
-        <summary>Details</summary>
-        <p>
-          The CSS uses <code>mask-image</code> and associated properties. 
-          It allows buttons to use CSS variables (as compared to 
-          <code>background-image</code> which requires changes 
-          the source SVG directly to do things like change colors).
-        </p>
-        <p>
-          I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
-          They are free, open-source, and use the 
-          <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
-          (Note: some of their SVGs have an issue that prevents them
-            from working properly with <code>mask-image</code>. 
-            See <em>Issues</em> below for how to fix that.)
-        </p>
-      </details>
-
 
       <h2>Button Customization</h2>
 
@@ -408,7 +424,7 @@ ul > :where(:not(:first-child)) {
           </div>
         </fieldset>
         <fieldset class="centerd-fieldset">
-          <legend>Example Output</legend>
+          <legend>Preview</legend>
           <div class="centered">
             <div class="exampleWrapper"></div>
             <div class="clickCount">Clicks: 0</div>
@@ -446,7 +462,7 @@ ul > :where(:not(:first-child)) {
           <textarea id="pageCSS" rows="7"></textarea>
         </div>
         <fieldset class="centerd-fieldset">
-          <legend>Example Output</legend>
+          <legend>Preview</legend>
           <div class="centered">
             <div class="exampleWrapper"></div>
             <div class="clickCount">Clicks: 0</div>
@@ -456,6 +472,9 @@ ul > :where(:not(:first-child)) {
 
       <h2>TODO</h2>
       <ul>
+        <li>
+          Add hover colors
+        </li>
         <li>
           Add button border radius
         </li>
@@ -476,7 +495,34 @@ ul > :where(:not(:first-child)) {
       </ul>
 
       <h2>Notes</h2>
+
       <ul>
+        <li>
+          I'm currently using icons from <a href="https://iconoir.com/">Iconoir</a>.
+          They are free, open-source, and use the 
+          <a href="https://github.com/iconoir-icons/iconoir/blob/main/LICENSE">MIT License</a>.
+          (Note: some of their SVGs have an issue that prevents them
+            from working properly with <code>mask-image</code>. 
+            See <em>Issues</em> below for how to fix that.)
+        </li>
+          <li>
+            The <em>Button Customization</em> section offers the ability to 
+            change the size, colors, and classes for the button. The colors
+            can be any valid CSS color property value including variables 
+            (which is how they are set up by default). 
+          </li>
+          <li>
+            The <em>Page Customization</em> section lets you change the 
+            variables live on the site so you can see the results. These
+            variables are output in the <em>Output -> Root CSS Variables</em>
+            section so you can copy/paste them into your site.
+          </li>
+        <li>
+          The CSS uses <code>mask-image</code> and associated properties. 
+          It allows buttons to use CSS variables (as compared to 
+          <code>background-image</code> which requires changes 
+          the source SVG directly to do things like change colors).
+        </li>
         <li>
           The conversion process works best with black and white
           SVGs. Any solid area in the source is filled in on the resulting output. 
