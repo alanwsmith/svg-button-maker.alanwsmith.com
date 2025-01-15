@@ -148,6 +148,10 @@ footer {
   text-align: center;
 }
 
+gh-stars {
+  display: inline-block;
+}
+
 h2, h3, h4, h5, h6 {
   color: var(--headline-color);
   line-height: 1.1;
@@ -238,6 +242,10 @@ main {
   overscroll-behavior-x: none;
 }
 
+.right {
+  text-align: right;
+}
+
 section {
   --flow-space: 1.3em;
 }
@@ -267,7 +275,7 @@ ul > :where(:not(:first-child)) {
       </hgroup>
       
       <p>
-        This tool converts SVGs into CSS based buttons. It provides
+        This tool converts SVGs into HTML/CSS based buttons. It provides
         everything you need to display and use them in copy/paste 
         code snippets.
       </p>
@@ -310,7 +318,7 @@ ul > :where(:not(:first-child)) {
             <button class="sample-new-window-button sample-button" data-kind="new-window-button"><div></div></button>
             <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
             <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
-            <button class="sample-wolf-button sample-button" data-kind="wolf-button"><div></div></button>
+            <button class="sample-elephant-button sample-button" data-kind="elephant-button"><div></div></button>
           </div>
         </fieldset>
       </div>
@@ -337,6 +345,11 @@ ul > :where(:not(:first-child)) {
           <textarea id="buttonHTML" rows="3" readonly></textarea>
           <div id="htmlCopyButtonWrapper" class="copyButtonWrapper"></div>
         </fieldset>
+        <div class="span-2 right"><gh-stars
+          repo="alanwsmith/svg-button-maker.alanwsmith.com"
+          data-foreground="var(--accent-color-1)"
+          data-background="var(--accent-color-2)"
+        ></gh-stars></div>
       </div>
 
       <details class="flow">
@@ -444,6 +457,9 @@ ul > :where(:not(:first-child)) {
       <h2>TODO</h2>
       <ul>
         <li>
+          Add button border radius
+        </li>
+        <li>
           Add an optional aria label field
         </li>
         <li>
@@ -521,6 +537,7 @@ ul > :where(:not(:first-child)) {
       import { init } from "/scripts/svg-button-maker.js"
       init()
     </script>
+    <script type="module" src="/scripts/gh-stars.js"></script>
 
   </body>
 </html>
