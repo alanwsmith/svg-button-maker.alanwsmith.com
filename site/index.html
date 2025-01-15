@@ -227,6 +227,10 @@ legend {
   font-weight: 900;
 }
 
+li > :where(:not(:first-child)) {
+  margin-top: 1em;
+}
+
 main {
   align-items: center;
   margin-inline: auto;
@@ -293,20 +297,32 @@ ul > :where(:not(:first-child)) {
         <p>The process for creating a button is:</p>
         <ol>
           <li>
-            Open your SVG file in a text editor (like the free 
-            <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>) then
-            copy and paste the text into the <em>Input -&gt; SVG Input</em>
-            field (or, click one of the <em>Input -&gt; Samples</em> to get started)
+            <p>
+              Open your SVG file in a text editor (e.g. the free 
+              <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a>) then
+              copy and paste the text into the <em>Input -&gt; SVG Input</em>
+              field
+            </p>
+            <p>
+              You can also click one of the <em>Input -&gt; Samples</em> to get started
+            </p>
           </li>
           <li>
-            The <em>Input -&gt; Preview</em> shows what the button will look like. 
-            Clicking on it will update the <em>Input -&gt; Listener Preview</em> counter.
+            The <em>Input -&gt; Preview</em> shows how the button will look and function.
+            When you click on it, its <em>Clicks</em> counter will update. 
+          </li>
           <li>
             Customize your button's colors, classes, and sizes in the <em>Button Customization</em> and 
             <em>Page Customization</em> sections
           <li>
-            Copy <em>Output -&gt; Root CSS Variables</em> and <em>Output -&gt; Button CSS</em>
-            to your site's CSS.
+            <p>
+              Copy the <em>Output -&gt; Root CSS Variables</em> and <em>Output -&gt; Button CSS</em>
+              fields to your site's CSS.
+            </p>
+            <p>
+              You only need on copy of the <em>Output -&gt; Root CSS Variables</em>
+              in your CSS even if you use multiple <em>Output -&gt; Button CSS</em> snippets
+              to create different buttons</p>
           </li>
           <li>
             Copy the <em>Output -&gt; Example Listener</em> code to your
@@ -334,15 +350,7 @@ ul > :where(:not(:first-child)) {
           <legend>SVG Input</legend>
           <textarea id="svgInput" rows="7"></textarea>
         </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Preview</legend>
-          <div class="exampleWrapper centered"></div>
-        </fieldset>
-        <fieldset class="centered-fieldset">
-          <legend>Listener Preview</legend>
-          <div class="clickCount centered">Clicks: 0</div>
-        </fieldset>
-        <fieldset class="span-2">
+        <fieldset>
           <legend>Samples</legend>
           <div class="sampleWrapper">
             <button class="sample-rewind-button sample-button" data-kind="rewind-button"></button>
@@ -355,6 +363,13 @@ ul > :where(:not(:first-child)) {
             <button class="sample-sound-high-button sample-button" data-kind="sound-high-button"><div></div></button>
             <button class="sample-mute-button sample-button" data-kind="mute-button"><div></div></button>
             <button class="sample-elephant-button sample-button" data-kind="elephant-button"><div></div></button>
+          </div>
+        </fieldset>
+        <fieldset class="centered-fieldset">
+          <legend>Preview</legend>
+          <div class="centered">
+          <div class="exampleWrapper centered"></div>
+          <div class="clickCount centered">Clicks: 0</div>
           </div>
         </fieldset>
       </div>
