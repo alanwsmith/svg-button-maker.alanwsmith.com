@@ -189,6 +189,14 @@ function doUpdate() {
   document.head.appendChild(listenerScript)
   */
 
+  state.previewCount = 0
+
+  let clickCountNodes = document.querySelectorAll(".click-count")
+  let clickCountEls = [...clickCountNodes]
+  clickCountEls.forEach((clickCountEl) => {
+    clickCountEl.innerHTML = "-"
+  })
+
   let results = convert(state.svgInput.value)
   state.rootVariables.value = results[0]
   state.cssOutput.value = results[1]
