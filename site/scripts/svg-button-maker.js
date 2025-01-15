@@ -109,10 +109,8 @@ ${pageVarsString}
   background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
   border-radius: var(--button-border-radius);
-  cursor: pointer;
   height: var(--button-height);
   margin: 0;
-  padding: 0;
   width: var(--button-width);
   position: relative;
 }
