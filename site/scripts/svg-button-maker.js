@@ -102,15 +102,24 @@ function convert(input) {
   let converted = encodeURIComponent(input)
   let rootVariables = `:root {
 ${pageVarsString}
-  ${state.backgroundColorVar.value}: ${state.backgroundColorValue.value};
-  ${state.borderColorVar.value}: ${state.borderColorValue.value};
-  ${state.buttonColorVar.value}: ${state.buttonColorValue.value};
 }
 `
 
   let buttonCSS = `.${state.buttonSelector.value} {
   background: var(${state.backgroundColorVar.value});
   border: 1px solid var(${state.borderColorVar.value});
+  border-radius: var(--button-border-radius);
+  cursor: pointer;
+  height: ${state.buttonHeight.value};
+  margin: 0;
+  padding: 0;
+  width: ${state.buttonWidth.value};
+  position: relative;
+}
+
+.${state.buttonSelector.value}:hover {
+  background: black;
+  border: 1px solid white;
   border-radius: var(--button-border-radius);
   cursor: pointer;
   height: ${state.buttonHeight.value};
@@ -134,6 +143,22 @@ ${pageVarsString}
   top: 0;
   width: 100%;
 }
+
+.${state.buttonSelector.value}:hover:after {
+  background: var(${state.buttonHoverColorVar.value});
+  content: "";
+  height: 100%;
+  left: 0;
+  margin: 0;
+  mask-image: url("data:image/svg+xml;utf8,${converted}");
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 `
   return [rootVariables, buttonCSS]
 }
@@ -163,7 +188,11 @@ function loadInitialValues() {
   state.pageCSS.value = `--accent-color-1: #A8763E;
 --accent-color-2: #F9EAE1;
 --background-color: #F7F3E3;
+--button-background-color: var(--accent-color-2);
+--button-border-color: var(--accent-color-1);
 --button-border-radius: 0.7rem;
+--button-color: var(--accent-color-1);
+--button-hover-color: var(--accent-color-2);
 --headline-color: #112;
 --text-color: #112;
 --title-color: #112;`
@@ -172,9 +201,7 @@ function loadInitialValues() {
   state.buttonSelector.value = 'play-button'
   state.buttonWidth.value = '3.5rem'
   state.buttonHeight.value = '2rem'
-  state.buttonColorValue.value = 'var(--accent-color-1)'
-  state.buttonColorVar.value = '--button-color'
-  state.borderColorValue.value = 'var(--accent-color-1)'
+  state.buttonHoverColorVar.value = '--button-hover-color'
   state.borderColorVar.value = '--button-border-color'
   state.backgroundColorValue.value = 'var(--accent-color-2)'
   state.backgroundColorVar.value = '--button-background-color'
@@ -205,9 +232,8 @@ function prepElements() {
   const els = [
     "backgroundColorValue",
     "backgroundColorVar",
-    "buttonColorValue",
     "buttonColorVar",
-    "borderColorValue",
+    "buttonHoverColorVar",
     "borderColorVar",
     "buttonHeight",
     "buttonSelector",
