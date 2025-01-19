@@ -141,11 +141,6 @@ ${pageVarsString}
   position: relative;
 }
 
-.${state.buttonSelector.value}:hover {
-  background: var(${state.backgroundHoverColorVar.value});
-  border: 1px solid var(${state.borderHoverColorVar.value});
-}
-
 .${state.buttonSelector.value}:after {
   background: var(${state.buttonColorVar.value});
   content: "";
@@ -161,8 +156,15 @@ ${pageVarsString}
   width: 100%;
 }
 
-.${state.buttonSelector.value}:hover:after {
-  background: var(${state.buttonHoverColorVar.value});
+@media (hover: hover) {
+  .${state.buttonSelector.value}:hover {
+    background: var(${state.backgroundHoverColorVar.value});
+    border: 1px solid var(${state.borderHoverColorVar.value});
+  }
+
+  .${state.buttonSelector.value}:hover:after {
+    background: var(${state.buttonHoverColorVar.value});
+  }
 }
 
 `

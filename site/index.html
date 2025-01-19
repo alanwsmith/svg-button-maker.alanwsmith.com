@@ -287,10 +287,31 @@ ul > :where(:not(:first-child)) {
       </hgroup>
       
       <p>
-        This tool converts SVGs into HTML/CSS buttons. It provides
-        everything you need to display and use them in copy/paste 
-        code snippets.
+        This tool converts SVGs into HTML/CSS buttons with the
+        following features:
       </p>
+      <ul>
+        <li>
+          <p>
+            Minimal button HTML. For example:
+          </p>
+          <p>
+            <code>&lt;button aria-label=&quot;Play&quot; class=&quot;play-button&quot;&gt;&lt;/button&gt;</code>
+          </p>
+        </li>
+        <li>
+          SVGs stored directly in the CSS
+        </li>
+        <li>
+          Hover state (including fix for Safari on iOS)
+        </li>
+        <li>
+          Colors defined through CSS custom property variables
+        </li>
+        <li>
+          Copy/paste snippets for everything you need
+        </li>
+      </ul>
 
       <details class="flow">
         <summary>Instructions</summary>
@@ -571,16 +592,18 @@ ul > :where(:not(:first-child)) {
       </details>
 
       <details>
-      <summary>References</summary>
-      <ul>
-        <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
-        <li><a href="https://css-tricks.com/probably-dont-base64-svg/">Probably Don’t Base64 SVG - CSS Tricks</a></li>
-        <li><a href="https://codepen.io/tigt/post/optimizing-svgs-in-data-uris">Optimizing SVGs in data URIs - Taylor Hunt</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label - MDN</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI() - MDN</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
-      </ul>
+        <summary>References</summary>
+        <ul>
+          <li><a href="https://css-tricks.com/using-svg/">Using SVG - CSS Tricks</a></li>
+          <li><a href="https://css-tricks.com/probably-dont-base64-svg/">Probably Don’t Base64 SVG - CSS Tricks</a></li>
+          <li><a href="https://codepen.io/tigt/post/optimizing-svgs-in-data-uris">Optimizing SVGs in data URIs - Taylor Hunt</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label">aria-label - MDN</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI() - MDN</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent">encodeURIComponent() - MDN</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
+          <li><a href="https://css-tricks.com/almanac/properties/m/mask-image/">mask-image - CSS Tricks</a></li>
+          <li><a href="https://web.dev/articles/css-masking">Apply effects to images with the CSS mask-image property</a></li>
+        </ul>
       </details>
 
     </main>
