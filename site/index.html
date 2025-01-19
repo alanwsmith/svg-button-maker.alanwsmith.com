@@ -124,6 +124,11 @@ a:hover, a:focus {
   justify-items: center;
 }
 
+code {
+  color: var(--accent-color-1);
+  font-size: var(--small-font-size);
+}
+
 .copyButtonWrapper { 
   text-align: right;
 }
@@ -296,14 +301,14 @@ ul > :where(:not(:first-child)) {
             Minimal button HTML. For example:
           </p>
           <p>
-            <code>&lt;button aria-label=&quot;Play&quot; class=&quot;play-button&quot;&gt;&lt;/button&gt;</code>
+            <code class="code">&lt;button aria-label=&quot;Play&quot; class=&quot;play-button&quot;&gt;&lt;/button&gt;</code>
           </p>
         </li>
         <li>
           SVGs stored directly in the CSS
         </li>
         <li>
-          Hover state (including fix for Safari on iOS)
+          Hover state (including fix for Safari on iOS - see references)
         </li>
         <li>
           Colors defined through CSS custom property variables
@@ -603,6 +608,7 @@ ul > :where(:not(:first-child)) {
           <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image">mask-image - MDN</a></li>
           <li><a href="https://css-tricks.com/almanac/properties/m/mask-image/">mask-image - CSS Tricks</a></li>
           <li><a href="https://web.dev/articles/css-masking">Apply effects to images with the CSS mask-image property</a></li>
+          <li><a href="https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/">For Safari on iOS: Solving Sticky Hover States with &amp;media (hover: hover)</a></li>
         </ul>
       </details>
 
